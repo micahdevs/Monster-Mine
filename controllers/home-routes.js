@@ -6,15 +6,16 @@ const { Monster } = require('../models/index.js');
 //TO CHECK : When the home page is loaded, GET call the most recently created monsters
 router.get('/', async (req, res ) => {
     try {
-        const dbMonsterPostData = await Monster.findAll({ //TO DO - Update the Model
-            order: [Task, 'createdAt', 'DESC'],
+        const dbMonsterData = await Monster.findAll({ //TO DO - Update the Model
+            //order: ['createdAt', 'DESC'],
             limit: 20,
         });
-        const monster_posts = dbMonsterPostData.map((posts) =>
+        const monster = dbMonsterData.map((posts) =>
             posts.get({ plain: true })
         );
+        //console.log(monster_posts);
         res.render('homepage', {
-            monster_posts
+            monster
         });
     } catch (err) {
         console.log(err);
