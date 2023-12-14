@@ -1,0 +1,53 @@
+:root {
+
+  /* --dark: #182c23; */
+  --error: rgb(228, 46, 1);
+  --border-radius: 0.3rem;
+  --gold1: #f9f295;
+  --gold2: #f7ef8a;
+  --gold3: #e0aa3e;
+  --gold4: #b88a44;
+
+  /*      Dark Blue
+  --primary: #0d1b2a;
+  --secondary: #1b263b;
+  --tertiary: #415a77;
+  --quatrinary: #778da9;
+  --light: #e0e1dd;     */
+
+/* Reds
+--darkred: #250902
+--lessdarkred: #38040e
+--Red: #640d14
+--lightRed: #800e13
+--LighterRed: #ad2831
+*/
+
+/* ToneShift */
+--darkest: #22223b;
+--dark: #4a4e69;
+--mid: #9a8c98;
+--light: #c9ada7;
+--lightest: #f2e9e4;
+}
+
+body {
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: flex-start;
+  background-color: var(--darkest);
+}
+
+header {
+  padding: 40px;
+  text-align: center;
+  background: var(--dark);
+  color: var(--lightest);
+}
+
+#monster-gallery {
+  background: var(--dark);
+}
