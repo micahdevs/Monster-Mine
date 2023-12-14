@@ -10,10 +10,29 @@
 </head>
 
 <body>
-  
+  <header>
+    <h1>That Blog Site</h1>
+  </header>
+  <nav>
+    <a href="/">Home</a>
+    <a href="/api/chamber">Chamber</a>
+
+
+    {{#if loggedIn}}
+    <button id="logout" class="btn-no-style">Logout</button>
+       
+    {{else}}
+    <a href="/login">Login</a>
+    {{/if}}
+  </nav>
+  <main>
     <div class="Body">
       {{{body}}}
     </div>
+  </main>
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
 </body>
 
 </html>
