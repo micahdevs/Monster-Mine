@@ -31,7 +31,7 @@ Monster.init(
             type: DataTypes.INTEGER
         },
         hit_dice: {
-            type: DataTypes.STRING
+            type: DataTypes.JSON
         },
         hit_points_roll: {
             type: DataTypes.STRING
@@ -78,7 +78,7 @@ Monster.init(
             type: DataTypes.JSON
         },
         languages: {
-            type: DataTypes.STRING
+            type: DataTypes.JSON
         },
         challenge_rating: {
             type: DataTypes.INTEGER

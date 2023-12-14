@@ -20,7 +20,7 @@
             "walking":30,
             "climbing":null,
             "swimming":null,
-            "flying":null,
+            "flying":null
         },
         "strength":11,
         "dexterity":16,
@@ -52,12 +52,12 @@
             "deception":null,
             "intimidation":null,
             "performance":null,
-            "persuasion":null,
+            "persuasion":null
         },
-        "damage_vulnerabilites":null,
-        "damage_resistances": ["cold","lightning","necrotic"],
-        "damage_immunities":["poison", "bludgeoning, piercing, and slashing from Nonmagical Attacks"],
-        "condition_immunities":["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"],
+        "damage_vulnerabilites":{"types":[null]},
+        "damage_resistances": {"types":["cold","lightning","necrotic"]},
+        "damage_immunities":{"types":["poison", "bludgeoning, piercing, and slashing from Nonmagical Attacks"]},
+        "condition_immunities":{"types":["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"]},
         "senses":{
             "truesight":120,
             "darkvision":null,
@@ -65,26 +65,12 @@
             "tremorsense":null,
             "passive_perception":19
         },
-        "languages":["common","elvish","dwarvish","draconic","abyssal"],
+        "languages":{"types":["common","elvish","dwarvish","draconic","abyssal"]},
         "challenge_rating":21,
         "proficiency_bonus":7,
         "xp":33000,
+        "legendary_actions":null,
+        "image":null,
+        "url":null
     }
 ]
-    // special_abilities: {
-    //     type: DataTypes.JSON
-    // },
-    // actions: {
-    //     type: DataTypes.JSON
-    // },
-    // legendary_actions: {
-    //     type: DataTypes.JSON
-    // },
-    // // image file URL?
-    // image: {
-    //     type: DataTypes.STRING
-    // },
-    // // api endpoint
-    // url: {
-    //     type: DataTypes.STRING
-    // }

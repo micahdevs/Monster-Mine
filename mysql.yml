@@ -1,0 +1,18 @@
+version: '3.1'
+services:
+  mysql_container:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: Welcome1
+    ports:
+      - "3306:3306"
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    environment:
+      PMA_HOST: mysql_container
+      PMA_USER: root
+      PMA_PASSWORD: Welcome1
+    ports:
+      - "8080:80"
