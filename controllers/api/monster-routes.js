@@ -2,18 +2,14 @@
 const router = require('express').Router();
 
 //TO DO - Update the Model
-const { Monster } = require('../models/index.js');
+const { Monster } = require('../../models/index.js');
 
 router.get('/:id', async (req, res) => {
     try {
-      const dbMonsterPostData = await Monster.findbyPk({
-          where: {id:req.params.id}, //TO DO Update the property tag in the where to be the User ID
-        });
-      const monster_posts = dbMonsterPostData.map((posts) => {
-        posts.get({ plain: true })
-      });
+      const dbMonsterData = await Monster.findByPk(req.params.id); //TO DO Update the property tag in the where to be the User ID
+      const monster = dbMonsterData.get({ plain: true });
       res.render('monster-detail-sheet', { //TO CHECK - Make sure the handlebar tag matches
-        monster_posts,
+        monster,
       });
     } catch (err) {
       console.log(err);
