@@ -2,7 +2,7 @@
 const router = require('express').Router();
 
 //TO DO - Update the Model
-const { Monster } = require('../models/index.js');
+const { Monster } = require('../../models/index.js');
 
 router.get('/:id', async (req, res ) => {
     try {
