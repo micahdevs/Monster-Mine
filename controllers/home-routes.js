@@ -1,20 +1,14 @@
 const router = require('express').Router();
 
 //TO DO - Update the Model
-const { BlogPost } = require('../models/index.js');
+const { Monster } = require('../models/index.js');
 
 //TO CHECK : When the home page is loaded, GET call the most recently created monsters
 router.get('/', async (req, res ) => {
     try {
-        const dbMonsterPostData = await BlogPost.findAll({ //TO DO - Update the Model
+        const dbMonsterPostData = await Monster.findAll({ //TO DO - Update the Model
             order: [Task, 'createdAt', 'DESC'],
             limit: 20,
-            // include: [
-            //   {
-            //     model: Tag,
-            //     attributes: ['tag_name'],
-            //   },
-            // ],
         });
         const monster_posts = dbMonsterPostData.map((posts) =>
             posts.get({ plain: true })
