@@ -72,5 +72,79 @@
         "legendary_actions":null,
         "image":null,
         "url":null
+    },
+    {   
+        "name":"MitchellMinion",
+        "size":"small",
+        "type":"humanoid",
+        "armor_class":
+            {
+                "type":"natural",
+                "value":110
+            },
+        "hit_points":14,
+        "hit_dice":
+            {
+                "type":"d4",
+                "value":4
+            },
+        "hit_points_roll":"4d4 + 4",
+        "speed":
+        {
+            "walking":30,
+            "climbing":null,
+            "swimming":null,
+            "flying":null
+        },
+        "strength":10,
+        "dexterity":10,
+        "constitution":12,
+        "intelligence":10,
+        "wisdom":10,
+        "charisma":10,
+        "proficiencies":{
+            "str_save":null,
+            "dex_save":null,
+            "con_save":null,
+            "int_save":null,
+            "wis_save":null,
+            "chr_save":null,
+            "athletics":null,
+            "acrobatics":null,
+            "sleight_of_hand":null,
+            "stealth":null,
+            "arcana":null,
+            "history":null,
+            "investigation":null,
+            "nature":null,
+            "religion":null,
+            "animal_handling":null,
+            "insight":null,
+            "medicine":null,
+            "perception":null,
+            "survival":null,
+            "deception":null,
+            "intimidation":null,
+            "performance":null,
+            "persuasion":null
+        },
+        "damage_vulnerabilites":{"types":[null]},
+        "damage_resistances": {"types":null},
+        "damage_immunities":{"types":null},
+        "condition_immunities":{"types":null},
+        "senses":{
+            "truesight":null,
+            "darkvision":null,
+            "blindsight":null,
+            "tremorsense":null,
+            "passive_perception":10
+        },
+        "languages":{"types":["common","goblin"]},
+        "challenge_rating":1,
+        "proficiency_bonus":0,
+        "xp":100,
+        "legendary_actions":null,
+        "image":null,
+        "url":null
     }
 ]
