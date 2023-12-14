@@ -1,5 +1,5 @@
 [
-    {
+    {   
         "name":"Justalich",
         "size":"medium",
         "type":"undead",
