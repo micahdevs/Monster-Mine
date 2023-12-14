@@ -29,25 +29,49 @@
 --mid: #9a8c98;
 --light: #c9ada7;
 --lightest: #f2e9e4;
+margin-left: 5%;
+margin-right: 5%;
+color: var(--light);
 }
 
 body {
-  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
   background-color: var(--darkest);
+  color: var(--light);
 }
 
 header {
   padding: 40px;
   text-align: center;
-  background: var(--dark);
-  color: var(--lightest);
+  background: var(--darkest);
+  color: var(--light);
+
 }
 
 #monster-gallery {
-  background: var(--dark);
+  background: var(--darkest);
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
+ 
 }
+
+nav{
+  background: var(--darkest);
+
+}
+
+hr {
+  border: none; /* Remove default border */
+  height: 2px; /* Set the height of the rule */
+  background: linear-gradient(90deg , #22223b, #4a4e69 , #9a8c98, #f2e9e4, #9a8c98, #4a4e69,#22223b );
+  margin: 20px 0; /* Add some margin for spacing */
+};
+
+/* background: linear-gradient(90deg , #22223b, #f0edec3f , #e0d9cec9, #e0dacec9, #e0d9cec9, #f0edec3b,#22223b ); */
