@@ -1,0 +1,143 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Character Information</title>
+</head>
+<body>
+
+
+  <form action="#" method="post" id="monsterForm">
+
+
+  <label for="name">Name:</label>
+  <input type="text" id="name-form" name="name" required>
+  <br>
+
+  <label for="size">Size:</label>
+  <input type="text" id="size-form" name="size" required>
+  <br>
+
+  <label for="category">Category:</label>
+  <input type="text" id="category-form" name="category" required>
+  <br>
+
+  <label for="armor">Armor:</label>
+  <input type="text" id="armor-form" name="armor" required>
+  <br>
+
+  <label for="hitPoints">Hit Points:</label>
+  <input type="text" id="hitPoints-form" name="hitPoints" required>
+  <br>
+
+  <label for="speed">Walk Speed:</label>
+  <input type="text" id="walk-speed-form" name="speed" >
+  <br>
+
+  <label for="speed">Fly Speed:</label>
+  <input type="text" id="fly-speed-form" name="fly-speed">
+  <br>
+
+  <label for="speed">Swim Speed:</label>
+  <input type="text" id="swim-speed-form" name="swim-speed">
+  <br>
+
+  <label for="STR">STR:</label>
+  <input type="text" id="STR-form" name="STR" required>
+  <br>
+
+  <label for="DEX">DEX:</label>
+  <input type="text" id="DEX-form" name="DEX" required>
+  <br>
+
+  <label for="CON">CON:</label>
+  <input type="text" id="CON-form" name="CON" required>
+  <br>
+
+  <label for="INT">INT:</label>
+  <input type="text" id="INT-form" name="INT" required>
+  <br>
+
+  <label for="WIS">WIS:</label>
+  <input type="text" id="WIS-form" name="WIS" required>
+  <br>
+
+  <label for="CHA">CHA:</label>
+  <input type="text" id="CHA-form" name="CHA" required>
+  <br>
+
+  <div class="item-fields" id="savingThrowsContainer">
+    <label for="savingThrows">Saving Throws:</label>
+    <input type="text" name="savingThrows[]" required>
+    <button type="button" onclick="addTextField('savingThrowsContainer', 'monsterForm')">Add</button>
+  </div>
+
+  <div class="item-fields" id="skillsContainer">
+    <label for="skills">Skills:</label>
+    <input type="text" name="skills[]" required>
+    <button type="button" onclick="addTextField('skillsContainer', 'monsterForm')">Add</button>
+  </div>
+
+  <div class="item-fields" id="damageImmunitiesContainer">
+    <label for="damageImmunities">Damage Immunities:</label>
+    <input type="text" name="damageImmunities[]" required>
+    <button type="button" onclick="addTextField('damageImmunitiesContainer', 'monsterForm')">Add</button>
+  </div>
+
+  <div class="item-fields" id="sensesContainer">
+    <label for="senses">Senses:</label>
+    <input type="text" name="senses[]" required>
+    <button type="button" onclick="addTextField('sensesContainer', 'monsterForm')">Add</button>
+  </div>
+
+
+  <div class="item-fields" id="languagesContainer">
+    <label for="languages">Languages:</label>
+    <input type="text" name="languages[]" required>
+    <button type="button" onclick="addTextField('languagesContainer', 'monsterForm')">Add</button>
+  </div>
+
+  <label for="challenge">Challenge:</label>
+  <input type="text" id="challenge-form" name="challenge">
+  <br>
+
+  <label for="proficiencyBonus">Proficiency Bonus:</label>
+  <input type="text" id="proficiencyBonus-form" name="proficiencyBonus"><br>
+
+
+  <label for="traits">Traits:</label>
+  <div id="traitsContainer">
+    <input type="text" id="traits" name="traits" required>
+    <button type="button" onclick="addTextField('traitsContainer', 'monsterForm')">Add</button>
+  </div>
+  
+  <div id="actionBlock">
+  <label for="actionTitle">Action Title:</label>
+  <input type="text" id="Action-title" name="actions">
+  
+  <label for="actionDescripton">Action Descripton:</label>
+  <input type="text" id="actions-form" name="actions">
+  <br>
+  
+</div>
+
+
+
+  <input id="monsterCreateSubmit" type="submit" value="Submit">
+</form>
+
+</body>
+</html>
+
+<script>
+  function addTextField(containerId, formId) {
+    var container = document.getElementById(containerId);
+    var input = document.createElement("input");
+    input.type = "text";
+    input.name = containerId + "[]"; // Use square brackets to indicate an array of values
+    container.appendChild(document.createElement("br")); // Add a line break for separation
+    container.appendChild(input);
+  }
+</script>
