@@ -2,9 +2,9 @@
 const router = require('express').Router();
 
 //TO DO - Update the Model
-const { Monster } = require('../../models/index.js');
+const { Monster } = require('../models/index.js');
 
-router.get('/:id', async (req, res ) => {
+router.get('/:id', async (req, res) => {
     try {
       const dbMonsterPostData = await Monster.findbyPk({
           where: {id:req.params.id}, //TO DO Update the property tag in the where to be the User ID
@@ -28,3 +28,5 @@ router.put('/:id', async (req, res ) => {
 router.delete('/:id', async (req, res ) => {
     try {} catch {}
 });
+
+module.exports = router;

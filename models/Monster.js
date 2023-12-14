@@ -12,16 +12,13 @@ Monster.init(
             autoIncrement: true,           
         },
         name: {
-            type: DataTypes.STRING,
-            allowNull: false,       
+            type: DataTypes.STRING,  
         },
         size: {
-            type: DataTypes.STRING,
-            allowNull: false,        
+            type: DataTypes.STRING,     
         },
         type: {
-            type: DataTypes.STRING,
-            allowNull: false,       
+            type: DataTypes.STRING, 
         },
         // may need to update this field and/or add additional attributes to work with the JSON -Research-
         armor_class: {
@@ -30,13 +27,14 @@ Monster.init(
         hit_points: {
             type: DataTypes.INTEGER
         },
+        // consider JSON datatype
         hit_dice: {
             type: DataTypes.JSON
         },
         hit_points_roll: {
             type: DataTypes.STRING
         },
-        // same for this JSON datatype
+        // same for this JSON datatype , can be null
         speed: {
             type: DataTypes.JSON
         },
