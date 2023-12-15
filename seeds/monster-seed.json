@@ -31,7 +31,7 @@
         "proficiencies":{
             "str_save":null,
             "dex_save":null,
-            "con_save":10,
+            "con_save": 10,
             "int_save":12,
             "wis_save":9,
             "chr_save":null,

@@ -1,16 +1,7 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monster Detail Sheet</title>
-</head>
-<body>
-
-  <div class="monster-detail-sheet">
+<section class="monster-detail-sheet">
+  <div class="monster-detail-sheet" id="monster-detail-sheet">
     <p>{{monster.image}}</p>
-
-    <h2><strong>{{monster.name}}</strong></h2>
+    <h1><strong>{{monster.name}}</strong></h1>
     <p>{{monster.size}} {{monster.type}}</p>
    <hr>
     <p><strong>Armor Class:</strong> {{monster.armor_class.type}} {{monster.armor_class.value}}</p>
@@ -26,7 +17,7 @@
 {{else}}
 {{/if}}
 {{/each}}
-
+</p>
 
     <p><strong>Strength:</strong> {{monster.strength}}</p>
     <p><strong>Dexterity:</strong> {{monster.dexterity}}</p>
@@ -34,43 +25,145 @@
     <p><strong>Intelligence:</strong> {{monster.intelligence}}</p>
     <p><strong>Wisdom:</strong> {{monster.wisdom}}</p>
     <p><strong>Charisma:</strong> {{monster.charisma}}</p>
-<p><strong>Proficiencies:</strong></p>
-{{#each monster.proficiencies}}
-{{#if this}}
- {{@key}}: {{this}}
-{{else}}
-{{/if}}
-{{/each}}
-
-
-<hr>
-  <p><strong>Damage Vulnerabilities:</strong> {{monster.damage_vulnerabilities}}</p>
-  {{#each monster.damage_resistances.types}}
-  <p>{{this}}</p>
-      {{/each}}
-
-    <p><strong>Damage Immunities:</strong></p>
-      {{#each monster.damage_immunities.types}}
-    <p>{{this}}</p>
-        {{/each}}
-
-
-    <p><strong>Condition Immunities:</strong> {{monster.condition_immunities.types}}</p>
-
-    <p><strong>Senses:</strong> {{monster.senses.types}}</p>
-    <p><strong>Languages:</strong> {{monster.languages.types}}</p>
+    <p><strong>Proficiencies:</strong>
+    {{#each monster.proficiencies}}
+      {{#if this}}
+        {{@key}}: {{this}}
+      {{else}}
+      {{/if}}
+    {{/each}}
+    </p>
     <hr>
 
+    <p><strong>Damage Vulnerabilities:</strong> {{monster.damage_vulnerabilities}}</p>
+    <strong>Damage Resistances:</strong> {{monster.damage_resistances.types}}
+    {{!-- {{#each monster.damage_resistances.types}}
+    {{this}}
+      {{/each}} --}}
+    </p>
+      
+   <p><strong>Damage Immunities: </strong>{{monster.damage_immunities.types}} </p>
+    {{!-- {{#each monster.damage_immunities.types}}
+      {{this}}
+    {{/each}} --}}
+     
+
+    <p><strong>Condition Immunities:</strong> 
+        {{#each monster.condition_immunities.types}}
+          {{this}}
+        {{/each}}   
+      </p> 
+
+    <p><strong>Senses:</strong>
+        {{#each monster.senses.types}}
+          {{this}}
+        {{/each}}  
+    </p>
+
+    <p><strong>Languages:</strong> 
+        {{#each monster.languages.types}}
+          {{this}}
+        {{/each}}  
+    </p>
+    <hr>
     <p><strong>Challenge Rating:</strong> {{monster.challenge_rating}}</p>
     <p><strong>Proficiency Bonus:</strong> {{monster.proficiency_bonus}}</p>
     <p><strong>XP:</strong> {{monster.xp}}</p>
-    <p><strong>Special Abilities:</strong> {{monster.special_abilities}}</p>
-    <p><strong>Actions:</strong> {{monster.actions}}</p>
-    <p><strong>Legendary Actions:</strong> {{monster.legendary_actions}}</p>
-    <br>
-    <br>
-    <br>
+
+    <p><strong>Special Abilities:</strong> 
+    {{#each monster.special_abilities}}
+      {{#if this}}
+        {{@key}}: {{this}}
+      {{else}}
+      {{/if}}
+    {{/each}}
+    </p>
+
+    <p><strong>Actions:</strong> 
+        {{#each monster.actions}}
+      {{#if this}}
+        {{@key}}: {{this}}
+      {{else}}
+      {{/if}}
+    {{/each}}
+</p>
+
+    <p><strong>Legendary Actions:</strong>
+        {{#each monster.legendary_actions}}
+      {{#if this}}
+        {{@key}}: {{this}}
+      {{else}}
+      {{/if}}
+    {{/each}}
+    </p>
 
   </div>
-</body>
-</html>
+</section>
+
+{{!-- 
+<section class="monster-detail-sheet">
+  <div class="monster-detail-sheet" id="monster-detail-sheet">
+    <h3>{{monster.image}}</h3>
+
+    <h1><strong>{{monster.name}}</strong></h1>
+    <p>{{monster.size}} {{monster.type}}</p>
+    <hr>
+
+    <h3><strong>Armor Class:</strong> {{monster.armor_class.type}} {{monster.armor_class.value}}</h3>
+    <h3><strong>Hit Points:</strong> {{monster.hit_points}}</h3>
+    <h3><strong>Hit Dice:</strong> {{monster.hit_dice.type}} {{monster.hit_dice.value}}</h3>
+    <h3><strong>Hit Points Roll:</strong> {{monster.hit_points_roll}}</h3>
+    <hr>
+
+    <h3><strong>Speed:</strong></h3>
+    {{#each monster.speed}}
+      {{#if this}}
+        <p><strong>{{@key}}:</strong> {{this}}</p>
+      {{else}}
+      {{/if}}
+    {{/each}}
+
+    <h3><strong>Strength:</strong> {{monster.strength}}</h3>
+    <h3><strong>Dexterity:</strong> {{monster.dexterity}}</h3>
+    <h3><strong>Constitution:</strong> {{monster.constitution}}</h3>
+    <h3><strong>Intelligence:</strong> {{monster.intelligence}}</h3>
+    <h3><strong>Wisdom:</strong> {{monster.wisdom}}</h3>
+    <h3><strong>Charisma:</strong> {{monster.charisma}}</h3>
+
+    <h3><strong>Proficiencies:</strong></h3>
+    {{#each monster.proficiencies}}
+      {{#if this}}
+        <p><strong>{{@key}}:</strong> {{this}}</p>
+      {{else}}
+      {{/if}}
+    {{/each}}
+    <hr>
+
+    <h3><strong>Damage Vulnerabilities:</strong> {{monster.damage_vulnerabilities}}</h3>
+    
+    {{#each monster.damage_resistances.types}}
+      <h3>{{this}}</h3>
+    {{/each}}
+    
+    <h3><strong>Damage Immunities:</strong></h3>
+    {{#each monster.damage_immunities.types}}
+      <h3>{{this}}</h3>
+    {{/each}}
+
+    <h3><strong>Condition Immunities:</strong> {{monster.condition_immunities.types}}</h3>
+
+    <h3><strong>Senses:</strong> {{monster.senses.types}}</h3>
+    <h3><strong>Languages:</strong> {{monster.languages.types}}</h3>
+    <hr>
+
+    <h3><strong>Challenge Rating:</strong> {{monster.challenge_rating}}</h3>
+    <h3><strong>Proficiency Bonus:</strong> {{monster.proficiency_bonus}}</h3>
+    <h3><strong>XP:</strong> {{monster.xp}}</h3>
+    <h3><strong>Special Abilities:</strong> {{monster.special_abilities}}</h3>
+    <h3><strong>Actions:</strong> {{monster.actions}}</h3>
+    <h3><strong>Legendary Actions:</strong> {{monster.legendary_actions}}</h3>
+    <br>
+    <br>
+    <br>
+  </div>
+</section> --}}

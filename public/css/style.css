@@ -1,5 +1,4 @@
 :root {
-
   /* --dark: #182c23; */
   --error: rgb(228, 46, 1);
   --border-radius: 0.3rem;
@@ -24,54 +23,133 @@
 */
 
 /* ToneShift */
---darkest: #22223b;
+--darkest: #1a0f0f;
 --dark: #4a4e69;
 --mid: #9a8c98;
 --light: #c9ada7;
+--paper: #e7d5c5;
 --lightest: #f2e9e4;
 margin-left: 5%;
 margin-right: 5%;
-color: var(--light);
 }
 
 body {
   font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-
   margin: 0;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   justify-content: flex-start;
   background-color: var(--darkest);
-  color: var(--light);
+  color: var(--paper);
 }
 
 header {
   padding: 40px;
   text-align: center;
   background: var(--darkest);
-  color: var(--light);
-
+  color: var(--paper);
 }
 
+
+nav{
+  background: var(--darkest);
+}
+/* 
+hr {
+  border: none; 
+  height: 2px; 
+  background: linear-gradient(90deg , #22223b, #4a4e69 , #9a8c98, #f2e9e4, #9a8c98, #4a4e69,#22223b );
+  margin: 20px 0; 
+} */
+
+
+.monster-detail-sheet {
+  /* margin: 0 auto; */
+  margin-top: 5%;
+  margin-bottom: 5%;
+  background-color: var(--paper);
+  color: var(--darkest);
+  padding: 1%;
+  max-width: 60%;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  /* font-family:cursive; */
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; */
+  /* font-family: Adobe Garamond Pro; */
+  /* font-family: IM Fell English; */
+  /* font-family:Caslon Antique; */
+  /* font-family:JSL Ancient; */
+  /* font-family:Elder Futhark; */
+  /* font-family:MedievalSharp; */
+  line-height: normal;
+} 
+
+.monster-detail-sheet hr {
+background-color: var(--darkest);
+border: none;
+ height: 1px;
+ background: linear-gradient(90deg ,#22223b, #22223b54, #69674a2d);
+ margin: 20px 0; 
+ /* max-width: 50%; */
+}
+
+@media (max-width: 768px) {
+  .monster-detail-sheet {
+    margin: 5%
+  }
+}
+
+p {
+  line-height: .8; /* Adjust the value as needed */
+}
+
+/* .thumbnail{
+  margin: 0 auto;
+  padding-top: 1%;
+  padding-bottom:1%;
+  background-color: var(--mid);
+  margin-top: 2%;
+  margin-bottom: 1%;
+  border:var(--paper);
+  border-style: double;
+  width: 200px;
+} */
 #monster-gallery {
   background: var(--darkest);
   text-align: center;
   margin-left: 15%;
   margin-right: 15%;
- 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1%; 
 }
 
-nav{
+.monster-gallery-header{
   background: var(--darkest);
-
+  text-align: center;
+  margin-left: 15%;
+  margin-right: 15%;
 }
 
-hr {
-  border: none; /* Remove default border */
-  height: 2px; /* Set the height of the rule */
-  background: linear-gradient(90deg , #22223b, #4a4e69 , #9a8c98, #f2e9e4, #9a8c98, #4a4e69,#22223b );
-  margin: 20px 0; /* Add some margin for spacing */
-};
+.thumbnail {
+  flex: 1 0 200px; 
+  border: 2px double var(--paper); 
+  padding: 15px;
+  text-align: center;
+  background-color: var(--mid);
+  margin-top: 3%;
+  max-width: 200px;
+}
 
-/* background: linear-gradient(90deg , #22223b, #f0edec3f , #e0d9cec9, #e0dacec9, #e0d9cec9, #f0edec3b,#22223b ); */
+.thumbnail :hover {
+  color: #1a0f0f;
+}
+
+.thumbnail a {
+  text-decoration: none;
+  color: #333; /* Link color */
+}
+
+.thumbnail img {
+  max-width: 100%; /* Ensure images don't exceed the container width */
+}
