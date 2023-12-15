@@ -1,16 +1,42 @@
 const sequelize = require('../config/connection');
 const seedMonsters = require('./monster-seed');
-const { Monster } = require('../models');
+const { Monster, User } = require('../models');
 //const seedUsers = require('./userData');
 
+// const seedAll = async () => {
+//   await sequelize.sync({ force: true });
+
+//   await Monster.bulkCreate(seedMonsters);
+
+//   process.exit(0);
+// };
+
+// seedAll();
+
 const seedAll = async () => {
-  await sequelize.sync({ force: true });
+  try {
+    // Seed users
+    const user1 = await User.create({
+      username: 'testUsername',
+      email: 'test@gmail.com',
+      password: 'test1234',
+    });
 
-  const Monsters = await Monster.bulkCreate(seedMonsters, {
+    await Monster.bulkCreate([
+      {
+        name: 'Justalich',
+        user_id: user1.id, 
+      },
+      {
+        name: 'MitchellMinion',
+        user_id: user1.id, 
+      },
+    ]);
 
-  });
-
-  process.exit(0);
+    console.log('Seed successful!');
+  } catch (error) {
+    console.error('Seed failed:', error);
+  }
 };
 
 seedAll();
