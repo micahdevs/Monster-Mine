@@ -78,61 +78,65 @@
 
     <div class="item-fields" id="speed_box">
         <label for="speed_box">Speed:</label>
-
         <button type="button" onclick="addTextField('speed_box', 'monsterForm')">Add</button>
     </div>
 
     <form>
 
-
-    
         <label for="STR">STR:</label>
-        <input type="text" id="STR-form" name="STR" required>
+        <input type="number" id="STR-form" name="STR" required>
         <br>
     
         <label for="DEX">DEX:</label>
-        <input type="text" id="DEX-form" name="DEX" required>
+        <input type="number" id="DEX-form" name="DEX" required>
         <br>
     
         <label for="CON">CON:</label>
-        <input type="text" id="CON-form" name="CON" required>
+        <input type="number" id="CON-form" name="CON" required>
         <br>
     
         <label for="INT">INT:</label>
-        <input type="text" id="INT-form" name="INT" required>
+        <input type="number" id="INT-form" name="INT" required>
         <br>
     
         <label for="WIS">WIS:</label>
-        <input type="text" id="WIS-form" name="WIS" required>
+        <input type="number" id="WIS-form" name="WIS" required>
         <br>
     
         <label for="CHA">CHA:</label>
-        <input type="text" id="CHA-form" name="CHA" required>
+        <input type="number" id="CHA-form" name="CHA" required>
         <br>
+    </form>
     
-        <div class="item-fields" id="savingThrowsContainer">
-        <label for="savingThrows">Saving Throws:</label>
-        <input type="text" name="savingThrows[]" required>
-        <button type="button" onclick="addTextField('savingThrowsContainer', 'monsterForm')">Add</button>
-        </div>
+    <div class="item-fields" id="savingThrows_box">
+        <label for="savingThrows_box">Saving Throws:</label>
+        <button type="button" onclick="addTextField('savingThrows_box', 'monsterForm')">Add</button>
+    </div>
     
-        <div class="item-fields" id="skillsContainer">
-        <label for="skills">Skills:</label>
-        <input type="text" name="skills[]" required>
-        <button type="button" onclick="addTextField('skillsContainer', 'monsterForm')">Add</button>
-        </div>
+    <div class="item-fields" id="skills_box">
+        <label for="skills_box">Skills:</label>
+        <button type="button" onclick="addTextField('skills_box', 'monsterForm')">Add</button>
+    </div>
+
+    <div class="item-fields" id="damageResistances_box">
+        <label for="damageResistances_box">Damage Resistances:</label>
+        <button type="button" onclick="addTextField('damageResistances_box', 'monsterForm')">Add</button>
+    </div>
     
-        <div class="item-fields" id="damageImmunitiesContainer">
-        <label for="damageImmunities">Damage Immunities:</label>
-        <input type="text" name="damageImmunities[]" required>
-        <button type="button" onclick="addTextField('damageImmunitiesContainer', 'monsterForm')">Add</button>
-        </div>
+    <div class="item-fields" id="damageImmunities_box">
+        <label for="damageImmunities_box">Damage Immunities:</label>
+        <button type="button" onclick="addTextField('damageImmunities_box', 'monsterForm')">Add</button>
+    </div>
+
+    <div class="item-fields" id="conditionImmunities_box">
+        <label for="conditionImmunities_box">Condition Immunities:</label>
+        <button type="button" onclick="addTextField('conditionImmunities_box', 'monsterForm')">Add</button>
+    </div>
     
-        <div class="item-fields" id="sensesContainer">
-        <label for="senses">Senses:</label>
-        <input type="text" name="senses[]" required>
-        <button type="button" onclick="addTextField('sensesContainer', 'monsterForm')">Add</button>
-        </div>
+    <div class="item-fields" id="senses_box">
+        <label for="senses_box">Senses:</label>
+        <button type="button" onclick="addTextField('senses_box', 'monsterForm')">Add</button>
+    </div>
     
         <div class="item-fields" id="languagesContainer">
         <label for="languages">Languages:</label>
