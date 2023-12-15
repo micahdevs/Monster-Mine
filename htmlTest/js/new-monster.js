@@ -12,6 +12,8 @@ const swim_speed =$('swim-speed-form');
 const climb_speed = $('climb-speed-form');
 
 localStorage.setItem("speed_count",0);
+localStorage.setItem("save_count",0);
+localStorage.setItem("skill_count",0);
 
 class Dropdown {
     constructor (id,class_opt,container,options) {
@@ -24,14 +26,13 @@ class Dropdown {
         let div = document.createElement("div");
         let fieldset = document.createElement("fieldset");
         let select = document.createElement("select");
-        let input = document.createElement("input");
+
         let id = 0;
 
         $(div).addClass("row")
         $(select).addClass(this.class_opt);
+        div.id = this.container.id + "_container_" + this.id;
         select.id = this.container.id + "_type_" + this.id;
-        input.type = "number";
-        input.id = this.container.id +"_input_"+ this.id;
 
         this.options.forEach((opt) => {
             let speed_opt = document.createElement("option");
@@ -43,13 +44,26 @@ class Dropdown {
 
         fieldset.appendChild(select);
         div.appendChild(fieldset);
-        div.appendChild(input);
-        div.appendChild(document.createElement("br"));
         this.container.appendChild(div);
 
     }
     newInput(){
+        let div = document.getElementById(this.container.id + "_container_" + this.id);
+        let input = document.createElement("input");
+        input.type = "number";
+        input.id = this.container.id +"_input_"+ this.id;
+        div.appendChild(input);
+    }
 
+    newDeletebutton(){
+        let div = document.getElementById(this.container.id + "_container_" + this.id);
+        let deletebutton = document.createElement("button");
+        $(deletebutton).addClass("btn btn-secondary");
+        $(deletebutton).html("&#10060");
+        deletebutton.addEventListener("click",function(){
+            div.remove();
+        })
+        div.appendChild(deletebutton);
     }
 };
 
@@ -64,7 +78,8 @@ function addTextField(containerId, formId) {
     var container = document.getElementById(containerId);
     const class_opt = "btn btn-secondary dropdown-toggle"; //The CSS style of the new button via Bootstrap
 
-    if (container.id = "speed_box") {
+    if (container.id === "speed_box") {
+        console.log("Speed");
         let current_speed = localStorage.getItem("speed_count");
         let next_speed = parseInt(current_speed) +1;
         let options = ["walking","swimming","flying","climbing","burrowing","jumping","teleporting"];
@@ -72,15 +87,32 @@ function addTextField(containerId, formId) {
         const new_speed = new Dropdown (current_speed,class_opt,container,options);
         new_speed.newField();
         new_speed.newInput();
+        new_speed.newDeletebutton();
+    } 
+    
+    if(container.id === "savingThrows_box"){
+        console.log("Saving Throw");
+        let current_save = localStorage.getItem("save_count");
+        let next_save = parseInt(current_save) +1;
+        let options = ["Strength","Dexterity","Constitution","Intelligence","Wisdom","Charisma"];
+        localStorage.setItem("save_count",next_save);
+        const new_save = new Dropdown (current_save,class_opt,container,options);
+        new_save.newField();
+        new_save.newDeletebutton();
+    }
 
-        
-        console.log(new_speed);
+    if(container.id === "skills_box"){
+        console.log("Skill");
+        let current_skill = localStorage.getItem("skill_count");
+        let next_skill = parseInt(current_skill) +1;
+        let options = ["Athletics","Acrobatics","Sleight of Hand","Stealth","Arcana","History","Investigation","Nature","Religion","Animal Handling","Insight","Medicine","Perception","Survival","Deception","Intimidation","Performance","Persuasion"];
+        localStorage.setItem("skill_count",next_skill);
+        const new_save = new Dropdown (current_skill,class_opt,container,options);
+        new_save.newField();
+        new_save.newDeletebutton();
+    }
 
-        
-        
-
-
-    } else {
+    else {
     var input = document.createElement("input");
     input.type = "text";
     input.name = containerId + "[]"; // Use square brackets to indicate an array of values
