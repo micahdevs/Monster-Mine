@@ -15,8 +15,10 @@ router.get('/', async (req, res ) => {
         );
         //console.log(monster_posts);
         res.render('homepage', {
-            monster
+            monster,
+            loggedIn: req.session.loggedIn,
         });
+        
     } catch (err) {
         console.log(err);
         res.status(500).json(err);
@@ -27,7 +29,7 @@ router.get('/', async (req, res ) => {
 // TO CHECK When a USER hits LOGIN They are taken to the LOGIN page
 router.get('/login', (req, res) => {
     try {
-        if (req.session.logged_in) {
+        if (req.session.loggedIn) {
         res.redirect('/');
           return;
         }
