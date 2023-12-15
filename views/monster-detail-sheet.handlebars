@@ -19,35 +19,30 @@
     <p><strong>Hit Points Roll:</strong> {{monster.hit_points_roll}}</p>
        <hr>
 
-
-
-    <p><strong>Speed:</strong> Walking:{{monster.speed.walking}}, 
-    Climbing:{{monster.speed.climbing}}, Swiming: {{monster.speed.climbing}},
-     Flying: {{monster.speed.flying}}</p>
-   
- {{!-- <p><strong>Speed:</strong> {{#each monster.speed |speed|}}{{this[0]}}: {{this[1]}}, {{/each}}</p> --}}
-
-{{!-- {{#each monster as |monster|}}
-{{> monster-thumbnail}}
+<p><strong>Speed:</strong>
+{{#each monster.speed}}
+{{#if this}}
+ {{@key}}: {{this}}
+{{else}}
+{{/if}}
 {{/each}}
-</div> --}}
 
 
-    
     <p><strong>Strength:</strong> {{monster.strength}}</p>
     <p><strong>Dexterity:</strong> {{monster.dexterity}}</p>
     <p><strong>Constitution:</strong> {{monster.constitution}}</p>
     <p><strong>Intelligence:</strong> {{monster.intelligence}}</p>
     <p><strong>Wisdom:</strong> {{monster.wisdom}}</p>
     <p><strong>Charisma:</strong> {{monster.charisma}}</p>
-    <p><strong>Proficiencies:</strong></p>
-        Str Save: {{monster.proficiencies.str_save}} ||
-        Dex Save: {{monster.proficiencies.dex_save}} ||
-        Con Save: {{monster.proficiencies.con_save}} ||
-        Int Save: {{monster.proficiencies.int_save}} ||
-        Wis Save: {{monster.proficiencies.wis_save}} ||
-        Chr Save: {{monster.proficiencies.chr_save}} ||
-        etc...
+<p><strong>Proficiencies:</strong></p>
+{{#each monster.proficiencies}}
+{{#if this}}
+ {{@key}}: {{this}}
+{{else}}
+{{/if}}
+{{/each}}
+
+
 <hr>
   <p><strong>Damage Vulnerabilities:</strong> {{monster.damage_vulnerabilities}}</p>
   {{#each monster.damage_resistances.types}}
