@@ -9,12 +9,14 @@
 
 <body>
   <header>
-    <h1>Monster Chamber</h1>
+    <h3>Monster Chamber</h3>
   </header>
   <main>
     <div class="Body">
+        <
       <h2>Welcome to the Monster Chamber</h2>
-      {{#each monsters as |monster|}}
+      <a href = '/api/monster/new'>New Monster</a>
+      {{#each monster as |monster|}}
         {{> monster-thumbnail}}
       {{/each}}
     </div>
