@@ -17,24 +17,32 @@
   <input type="text" id="category-form" name="category" required>
   <br>
 
-  <label for="armor">Armor:</label>
-  <input type="text" id="armor-form" name="armor" required>
+  <label for="armor type">Armor Type:</label>
+  <input type="text" id="armor-type-form" name="armor type" required>
   <br>
 
-  <label for="hitPoints">Hit Points:</label>
-  <input type="text" id="hitPoints-form" name="hitPoints" required>
+  <label for="armor class">Armor Class:</label>
+  <input type="number" id="armor-class-form" name="armor-class" required>
+  <br>
+
+  <label for="hitDice">Number of Hit Dice:</label>
+  <input type="number" id="hitDice-form" name="hitDice" required>
   <br>
 
   <label for="speed">Walk Speed:</label>
-  <input type="text" id="walk-speed-form" name="speed" >
+  <input type="number" id="walk-speed-form" name="speed" >
   <br>
 
   <label for="speed">Fly Speed:</label>
-  <input type="text" id="fly-speed-form" name="fly-speed">
+  <input type="number" id="fly-speed-form" name="fly-speed">
   <br>
 
   <label for="speed">Swim Speed:</label>
-  <input type="text" id="swim-speed-form" name="swim-speed">
+  <input type="number" id="swim-speed-form" name="swim-speed">
+  <br>
+
+  <label for="speed">Climb Speed:</label>
+  <input type="number" id="climb-speed-form" name="swim-speed">
   <br>
 
   <label for="STR">STR:</label>
@@ -133,3 +141,5 @@
     container.appendChild(input);
   }
 </script>
+
+<script src = "/js/new-monster.js"></script>
