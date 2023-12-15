@@ -43,6 +43,8 @@ body {
   justify-content: flex-start;
   background-color: var(--darkest);
   color: var(--paper);
+
+
 }
 
 header {
@@ -50,6 +52,7 @@ header {
   text-align: center;
   background: var(--darkest);
   color: var(--paper);
+  font-size: x-large;
 }
 
 
@@ -162,4 +165,8 @@ p {
 .thumbnail img {
   max-width: 100%;
   height: auto; /* Maintain aspect ratio for images */
+}
+
+.btn btn-primary{
+  font-family: 'Silkscreen', sans-serif;
 }

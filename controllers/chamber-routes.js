@@ -23,12 +23,12 @@ router.get('/', async (req, res ) => {
         // order: [Task, 'createdAt', 'DESC']
       });
 
-    const monster_posts = dbMonsterPostData.map((posts) => {
+    const monster = dbMonsterPostData.map((posts) => {
       posts.get({ plain: true })
     });
 
     res.render('chamber', { //TO CHECK - Make sure the handlebar tag matches
-      monster_posts,
+      monster,
       loggedIn: req.session.loggedIn,
     });
 
