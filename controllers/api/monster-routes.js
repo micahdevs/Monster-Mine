@@ -25,4 +25,14 @@ router.delete('/:id', async (req, res ) => {
     try {} catch {}
 });
 
+router.get('/new', async (req,res) => {
+  try {
+    res.render('monster-create-page', {})
+  } catch (err) {
+    console.log(err);
+    res.status(500).json(err);
+  }
+})
+
+
 module.exports = router;
