@@ -7,6 +7,14 @@
   <title>Monster Builder</title>
   <link rel="stylesheet" type="text/css" href="/css/jass.css">
   <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:wght@100&family=Caveat&family=Silkscreen:wght@700&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Asap:wght@100&family=Caveat&family=Silkscreen&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -15,12 +23,14 @@
   </header>
   <nav>
     <a href="/">Home</a>
-    <a href="/api/chamber">Chamber</a>
+   
    
 
     {{#if loggedIn}}
-    <button id="logout" class="btn-no-style">Logout</button>
-    <a href="/api/chamber">Chamber</a>
+    {{!-- <button id="logout" class="btn-no-style">Logout</button> --}}
+    <a id="logout" href="/">Logout</a>
+     <a href="/api/chamber">Chamber</a>
+    <a href = '/api/monster/new'>New Monster</a>
        
     {{else}}
     <a href="/login">Login</a>
@@ -31,6 +41,8 @@
       {{{body}}}
     </div>
   </main>
+
+
   {{#if loggedIn}}
   <script src="/js/logout.js"></script>
   {{/if}}
