@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Monster Chamber</title>
+</head>
+
+<body>
+  <header>
+    <h1>Monster Chamber</h1>
+  </header>
+  <main>
+    <div class="Body">
+      <h2>Welcome to the Monster Chamber</h2>
+      {{#each monsters as |monster|}}
+        {{> monster-thumbnail}}
+      {{/each}}
+    </div>
+  </main>
+</body>
+
+</html>

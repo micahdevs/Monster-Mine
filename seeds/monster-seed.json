@@ -1,6 +1,7 @@
 [
     {   
         "name":"Justalich",
+        "user_id": 1,
         "size":"medium",
         "type":"undead",
         "armor_class":
@@ -75,6 +76,7 @@
     },
     {   
         "name":"MitchellMinion",
+        "user_id": 1,
         "size":"small",
         "type":"humanoid",
         "armor_class":
