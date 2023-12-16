@@ -5,6 +5,20 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monster Chamber</title>
+
+  <!-- Dropzone.js styles -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css">
+  <style>
+    /* Dropzone styles: will eventually move to style.css file */
+    .dropzone {
+      border: 2px dashed #aaa;
+      border-radius: 10px;
+      background-color: #f9f9f9;
+      min-height: 150px;
+      padding: 20px;
+      text-align: center;
+    }
+  </style>
 </head>
 
 <body>
@@ -13,14 +27,35 @@
   </header>
   <main>
     <div class="Body">
-        <
       <h2>Welcome to the Monster Chamber</h2>
-      <a href = '/api/monster/new'>New Monster</a>
-      {{#each monster as |monster|}}
-        {{> monster-thumbnail}}
-      {{/each}}
+      <a href="/api/monster/new">New Monster</a>
+
+      {{#if loggedIn}}
+        <div id="monster-gallery">
+          {{#each monsters as |monster|}}
+            {{> monster-thumbnail}}
+          {{/each}}
+        </div>
+      {{else}}
+        <p>No monsters available in the chamber.</p>
+      {{/if}}
+
+      <form action="/upload" class="dropzone" id="monster-image-dropzone" enctype="multipart/form-data"></form>
     </div>
   </main>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
+  <script>
+    // Initialize Dropzone
+    Dropzone.autoDiscover = false;
+    const myDropzone = new Dropzone("#monster-image-dropzone", {
+      url: "/upload",
+      paramName: "monsterImage", // upload name
+      maxFilesize: 2, // MB
+      acceptedFiles: "image/*",
+      addRemoveLinks: true,
+    });
+  </script>
 </body>
 
 </html>
