@@ -39,6 +39,8 @@ app.set('view engine', 'handlebars');
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+// middleware to serve files from the 'uploads' directory, may be able to move uploads to public later
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // fileUpload middleware
 app.use(fileUpload());
@@ -47,10 +49,9 @@ app.post('/upload', (req, res) => {
     return res.status(400).send('No files were uploaded.');
   }
 
-  // Access the uploaded file directly, field name 'monsterImage'
   const monsterImage = req.files.monsterImage;
 
-  // Check if the file object is valid before using it
+  // Check if the file is valid
   if (!monsterImage) {
     return res.status(400).send('Monster image file is missing.');
   }
