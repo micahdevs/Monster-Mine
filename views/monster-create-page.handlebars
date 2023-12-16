@@ -1,145 +1,171 @@
 
 <body>
+    <header>
+        <h1>Monster Forge</h1>
+    </header>
 
+    <form action="#" method="post" id="monster_box">
+        <label for="name">Name:</label>
+        <input type="text" id="name-form" name="name" required>
+        <br>
+    </form>
 
-  <form action="#" method="post" id="monsterForm">
+    <div class = "row" id ="type_box">
+        <fieldset>
+            <label for="size">Select a Size</label>
+            <select class="btn btn-secondary dropdown-toggle" name="size" id="size">
+              <option>Tiny</option>
+              <option>Small</option>
+              <option selected="selected">Medium</option>
+              <option>Large</option>
+              <option>Huge</option>
+              <option>Gargantuan</option>
+            </select>
+        </fieldset>
+        
+        <form>
+            <label for="category">Category:</label>
+            <input type="text" id="category-form" name="category" required>
+            <br>
+        </form>
+    </div>
 
+    <div class = "row" id ="armor_box">
+        <form>
+            <label for="armor class">Armor Class:</label>
+            <input type="number" id="armor-class-form" name="armor-class" required>
+            <br>
+        </form>
+        <form>
+            <label for="armor type">Armor Type:</label>
+            <input type="text" id="armor-type-form" name="armor type" required>
+            <br>
+        </form>
+    </div>
+        
+    <div class = "row" id ="hp_box">
+        <form>
+            <label for="hitDice">Number of Hit Dice:</label>
+            <input type="number" id="hitDice-form" name="hitDice" required>
+            <br>
+        </form>
+        <fieldset>
+            <label for="hit_dice_type">Select a Hit Dice</label>
+            <select class="btn btn-secondary dropdown-toggle" name="hit_dice_type" id="hit_dice_type">
+              <option>d4</option>
+              <option>d6</option>
+              <option selected="selected">d8</option>
+              <option>d10</option>
+              <option>d12</option>
+            </select>
+        </fieldset>
+       
+        <div>
+            <p id = "HP"><span>HP:</span> 12 <span id = "HP_calculation">(10d12+8)</span></p>
+        </div>
+    </div>
 
-  <label for="name">Name:</label>
-  <input type="text" id="name-form" name="name" required>
-  <br>
+    <div class="item-fields" id="speed_box">
+        <label for="speed_box">Speed:</label>
+        <button type="button" onclick="addTextField('speed_box', 'monsterForm')">Add</button>
+    </div>
 
-  <label for="size">Size:</label>
-  <input type="text" id="size-form" name="size" required>
-  <br>
+    <form>
 
-  <label for="category">Category:</label>
-  <input type="text" id="category-form" name="category" required>
-  <br>
+        <label for="STR">STR:</label>
+        <input type="number" id="STR-form" name="STR" required>
+        <br>
+    
+        <label for="DEX">DEX:</label>
+        <input type="number" id="DEX-form" name="DEX" required>
+        <br>
+    
+        <label for="CON">CON:</label>
+        <input type="number" id="CON-form" name="CON" required>
+        <br>
+    
+        <label for="INT">INT:</label>
+        <input type="number" id="INT-form" name="INT" required>
+        <br>
+    
+        <label for="WIS">WIS:</label>
+        <input type="number" id="WIS-form" name="WIS" required>
+        <br>
+    
+        <label for="CHA">CHA:</label>
+        <input type="number" id="CHA-form" name="CHA" required>
+        <br>
+    </form>
+    
+    <div class="item-fields" id="savingThrows_box">
+        <label for="savingThrows_box">Saving Throws:</label>
+        <button type="button" onclick="addTextField('savingThrows_box', 'monsterForm')">Add</button>
+    </div>
+    
+    <div class="item-fields" id="skills_box">
+        <label for="skills_box">Skills:</label>
+        <button type="button" onclick="addTextField('skills_box', 'monsterForm')">Add</button>
+    </div>
 
-  <label for="armor type">Armor Type:</label>
-  <input type="text" id="armor-type-form" name="armor type" required>
-  <br>
+    <div class="item-fields" id="damageResistances_box">
+        <label for="damageResistances_box">Damage Resistances:</label>
+        <button type="button" onclick="addTextField('damageResistances_box', 'monsterForm')">Add</button>
+    </div>
+    
+    <div class="item-fields" id="damageImmunities_box">
+        <label for="damageImmunities_box">Damage Immunities:</label>
+        <button type="button" onclick="addTextField('damageImmunities_box', 'monsterForm')">Add</button>
+    </div>
 
-  <label for="armor class">Armor Class:</label>
-  <input type="number" id="armor-class-form" name="armor-class" required>
-  <br>
+    <div class="item-fields" id="conditionImmunities_box">
+        <label for="conditionImmunities_box">Condition Immunities:</label>
+        <button type="button" onclick="addTextField('conditionImmunities_box', 'monsterForm')">Add</button>
+    </div>
+    
+    <div class="item-fields" id="senses_box">
+        <label for="senses_box">Senses:</label>
+        <button type="button" onclick="addTextField('senses_box', 'monsterForm')">Add</button>
+    </div>
+    
+        <div class="item-fields" id="languagesContainer">
+        <label for="languages">Languages:</label>
+        <input type="text" name="languages[]" required>
+        <button type="button" onclick="addTextField('languagesContainer', 'monsterForm')">Add</button>
+        </div>
+    
+        <label for="challenge">Challenge:</label>
+        <input type="text" id="challenge-form" name="challenge">
+        <br>
+    
+        <label for="proficiencyBonus">Proficiency Bonus:</label>
+        <input type="text" id="proficiencyBonus-form" name="proficiencyBonus"><br>
+    
+    
+        <label for="traits">Traits:</label>
+        <div id="traitsContainer">
+            <input type="text" id="traits" name="traits" required>
+            <button type="button" onclick="addTextField('traitsContainer', 'monsterForm')">Add</button>
+        </div>
+        
+        <div id="actionBlock">
+            <label for="actionTitle">Action Title:</label>
+            <input type="text" id="Action-title" name="actions">
+            
+            <label for="actionDescripton">Action Descripton:</label>
+            <input type="text" id="actions-form" name="actions">
+            <br>
+        </div>
 
-  <label for="hitDice">Number of Hit Dice:</label>
-  <input type="number" id="hitDice-form" name="hitDice" required>
-  <br>
+        <button class="btn btn-secondary" type="button" id="monsterCreateSubmit">
+            Submit
+        </button>
 
-  <label for="speed">Walk Speed:</label>
-  <input type="number" id="walk-speed-form" name="speed" >
-  <br>
-
-  <label for="speed">Fly Speed:</label>
-  <input type="number" id="fly-speed-form" name="fly-speed">
-  <br>
-
-  <label for="speed">Swim Speed:</label>
-  <input type="number" id="swim-speed-form" name="swim-speed">
-  <br>
-
-  <label for="speed">Climb Speed:</label>
-  <input type="number" id="climb-speed-form" name="swim-speed">
-  <br>
-
-  <label for="STR">STR:</label>
-  <input type="text" id="STR-form" name="STR" required>
-  <br>
-
-  <label for="DEX">DEX:</label>
-  <input type="text" id="DEX-form" name="DEX" required>
-  <br>
-
-  <label for="CON">CON:</label>
-  <input type="text" id="CON-form" name="CON" required>
-  <br>
-
-  <label for="INT">INT:</label>
-  <input type="text" id="INT-form" name="INT" required>
-  <br>
-
-  <label for="WIS">WIS:</label>
-  <input type="text" id="WIS-form" name="WIS" required>
-  <br>
-
-  <label for="CHA">CHA:</label>
-  <input type="text" id="CHA-form" name="CHA" required>
-  <br>
-
-  <div class="item-fields" id="savingThrowsContainer">
-    <label for="savingThrows">Saving Throws:</label>
-    <input type="text" name="savingThrows[]" required>
-    <button type="button" onclick="addTextField('savingThrowsContainer', 'monsterForm')">Add</button>
-  </div>
-
-  <div class="item-fields" id="skillsContainer">
-    <label for="skills">Skills:</label>
-    <input type="text" name="skills[]" required>
-    <button type="button" onclick="addTextField('skillsContainer', 'monsterForm')">Add</button>
-  </div>
-
-  <div class="item-fields" id="damageImmunitiesContainer">
-    <label for="damageImmunities">Damage Immunities:</label>
-    <input type="text" name="damageImmunities[]" required>
-    <button type="button" onclick="addTextField('damageImmunitiesContainer', 'monsterForm')">Add</button>
-  </div>
-
-  <div class="item-fields" id="sensesContainer">
-    <label for="senses">Senses:</label>
-    <input type="text" name="senses[]" required>
-    <button type="button" onclick="addTextField('sensesContainer', 'monsterForm')">Add</button>
-  </div>
-
-  <div class="item-fields" id="languagesContainer">
-    <label for="languages">Languages:</label>
-    <input type="text" name="languages[]" required>
-    <button type="button" onclick="addTextField('languagesContainer', 'monsterForm')">Add</button>
-  </div>
-
-  <label for="challenge">Challenge:</label>
-  <input type="text" id="challenge-form" name="challenge">
-  <br>
-
-  <label for="proficiencyBonus">Proficiency Bonus:</label>
-  <input type="text" id="proficiencyBonus-form" name="proficiencyBonus"><br>
-
-
-  <label for="traits">Traits:</label>
-  <div id="traitsContainer">
-    <input type="text" id="traits" name="traits" required>
-    <button type="button" onclick="addTextField('traitsContainer', 'monsterForm')">Add</button>
-  </div>
+    </form>
   
-  <div id="actionBlock">
-  <label for="actionTitle">Action Title:</label>
-  <input type="text" id="Action-title" name="actions">
-  
-  <label for="actionDescripton">Action Descripton:</label>
-  <input type="text" id="actions-form" name="actions">
-  <br>
-  
-</div>
-
-
-
-  <input id="monsterCreateSubmit" type="submit" value="Submit">
-</form>
-
 </body>
+  
 
 
-<script>
-  function addTextField(containerId, formId) {
-    var container = document.getElementById(containerId);
-    var input = document.createElement("input");
-    input.type = "text";
-    input.name = containerId + "[]"; // Use square brackets to indicate an array of values
-    container.appendChild(document.createElement("br")); // Add a line break for separation
-    container.appendChild(input);
-  }
-</script>
 
-<script src = "/js/new-monster.js"></script>
+
+</html>
