@@ -7,12 +7,12 @@ const { Monster } = require('../../models/index.js');
 
 router.get('/new', async (req,res) => {
   try {
-    res.render('monster-create-page', {})
+    res.render('monster-create-page', {loggedIn: req.session.loggedIn})
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
   }
-})
+});
 
 
 router.get('/:id', async (req, res) => {
