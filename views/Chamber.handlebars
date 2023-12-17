@@ -11,24 +11,27 @@
   <style>
     /* Dropzone styles: will eventually move to style.css file */
     .dropzone {
+          color: #130b0b;
+      background-color: #e7d5c5;
       border: 2px dashed #aaa;
       border-radius: 10px;
-      background-color: #f9f9f9;
       min-height: 150px;
       padding: 20px;
       text-align: center;
+      max-width: 300px;
+     
+      
     }
   </style>
 </head>
 
 <body>
   <header>
-    <h3>Monster Chamber</h3>
+    <h2>Welcome to the Monster Chamber</h2>
   </header>
   <main>
-    <div class="Body">
-      <h2>Welcome to the Monster Chamber</h2>
-      <a href="/api/monster/new">New Monster</a>
+    <div class="Body" id="chamber-body">
+      <a id="create-new-monster" href="/api/monster/new">Create New Monster</a>
 
       {{#if loggedIn}}
         <div id="monster-gallery">

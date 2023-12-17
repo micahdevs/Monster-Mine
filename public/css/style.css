@@ -1,37 +1,12 @@
 :root {
   /* --dark: #182c23; */
   --error: rgb(228, 46, 1);
-  --border-radius: 0.3rem;
-  --gold1: #f9f295;
-  --gold2: #f7ef8a;
-  --gold3: #e0aa3e;
-  --gold4: #b88a44;
-
-  /*      Dark Blue
-  --primary: #0d1b2a;
-  --secondary: #1b263b;
-  --tertiary: #415a77;
-  --quatrinary: #778da9;
-  --light: #e0e1dd;     */
-
-/* Reds
---darkred: #250902
---lessdarkred: #38040e
---Red: #640d14
---lightRed: #800e13
---LighterRed: #ad2831
-*/
-
-/* ToneShift */
-/* --darkest: #1a0f0f; */
 --darkest: #130b0b;
 --dark: #4a4e69;
 --mid: #9a8c98;
 --light: #c9ada7;
 --paper: #e7d5c5;
 --lightest: #f2e9e4;
-
-
 margin-left: 5%;
 margin-right: 5%;
 font-family: 'Silkscreen', sans-serif;
@@ -47,13 +22,13 @@ margin-bottom: 3%;
   font-size: xx-large;
   font-weight: bold;
 }
+
 #site-title{
   color: var(--paper);
   background-image: linear-gradient(to top, #f33279, #c95945);
   -webkit-background-clip: text;
   color: transparent;
-
-
+  font-size:  80px;
 }
 
 body {
@@ -171,9 +146,30 @@ p {
 
 .thumbnail img {
   max-width: 100%;
-  height: auto; /* Maintain aspect ratio for images */
+  height: auto; 
 }
 
-.btn btn-primary{
+.btn.btn-primary{
   font-family: 'Silkscreen', sans-serif;
+  background: linear-gradient(to top, #f332798f, #c959457c);
+  border: none; 
+  border-color: var(--mid);
+  border-radius: 0;
+}
+
+
+.btn.btn-primary:hover {
+  background: linear-gradient(to right, #e47562, #f55992);
+
+}
+
+#chamber-body{
+align-items: center;
+text-align: center;
+}
+
+#create-new-monster a{
+  text-decoration: none;
+  width: 100px;
+  font-size: larger;
 }
