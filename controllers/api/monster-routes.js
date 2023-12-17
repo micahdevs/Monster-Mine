@@ -20,7 +20,7 @@ router.get('/:id', async (req, res) => {
       const dbMonsterData = await Monster.findByPk(req.params.id); //TO DO Update the property tag in the where to be the User ID
       const monster = dbMonsterData.get({ plain: true });
       res.render('monster-detail-sheet', { //TO CHECK - Make sure the handlebar tag matches
-        monster,
+        monster, loggedIn: req.session.loggedIn,
       });
     } catch (err) {
       console.log(err);
