@@ -1,9 +1,20 @@
 
-
-    <div class="thumbnail">
-    <a href="/api/monster/{{id}}">
-    <img src={{image}} alt={{name}}>
-    <h4>{{name}}</h4>
-    <p></p>{{size}} {{type}}</p>
-    </a>
+<a href="/api/monster/{{id}}" class="thumbnail" style="background-image: url('{{image}}'); ">
+    <div class="thumbnail-text-backdrop"  style= "text-decoration: none; ">
+    <h4 style= "text-decoration: none; ">{{name}}</h4>
+    <p style= "text-decoration: none;">{{size}} {{type}}</p>
     </div>
+    </a>
+
+{{!-- 
+    <a href="/api/monster/{{id}}" class="thumbnail" style="background-image: url('{{image}}'); background-size: cover; background-position: top; height: 200px; display: block; position: relative; text-decoration: none;">
+
+  <div class="thumbnail-text-backdrop" style="position: absolute; bottom: 0; left: 0; right: 0; background-color: rgba(0, 0, 0, 0.7); color: #fff; padding: 10px;">
+    <h4 style="margin: 0;">{{name}}</h4>
+    <p style="margin: 0;">{{size}} {{type}}</p>
+  </div>
+
+</a> --}}
+
+{{!-- 
+background-size:cover; background-position:top; --}}
