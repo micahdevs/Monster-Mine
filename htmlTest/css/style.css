@@ -74,4 +74,41 @@ hr {
   margin: 20px 0; /* Add some margin for spacing */
 };
 
+input:focus::-webkit-input-placeholder {
+	color : transparent;
+}
+input:focus::-moz-placeholder {
+	color : transparent;
+}
+input:-moz-placeholder {
+	color : transparent;
+}
+input:focus::-webkit-input-placeholder {
+	opacity : 0;
+}
+input:focus::-moz-placeholder {
+	opacity : 0;
+}
+input:-moz-placeholder {
+	opacity : 0;
+}
+
+textarea:focus::-webkit-input-placeholder {
+	color : transparent;
+}
+textarea:focus::-moz-placeholder {
+	color : transparent;
+}
+textarea:-moz-placeholder {
+	color : transparent;
+}
+textarea:focus::-webkit-input-placeholder {
+	opacity : 0;
+}
+textarea:focus::-moz-placeholder {
+	opacity : 0;
+}
+textarea:-moz-placeholder {
+	opacity : 0;
+}
 /* background: linear-gradient(90deg , #22223b, #f0edec3f , #e0d9cec9, #e0dacec9, #e0d9cec9, #f0edec3b,#22223b ); */
