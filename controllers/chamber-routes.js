@@ -17,25 +17,26 @@ const { Monster, User } = require('../models/index.js');
 // TO DO This Route GET Summons a Users Monsters to their Home Page
 router.get('/', async (req, res ) => {
   try {
-    console.log('Entered /chamber GET route');
-    const dbMonsterPostData = await Monster.findAll({
-        where: { user_id: req.session.user_id }, //TO DO Update the property tag in the where to be the User ID
-        // order: [Task, 'createdAt', 'DESC']
+      const dbMonsterData = await Monster.findAll({ //TO DO - Update the Model
+        where: { user_id: req.session.user_id },
+          //order: ['createdAt', 'DESC'],
+        limit: 20,
       });
-
-    const monster = dbMonsterPostData.map((posts) => {
-      posts.get({ plain: true })
-    });
-
-    res.render('chamber', { //TO CHECK - Make sure the handlebar tag matches
-      monster,
-      loggedIn: req.session.loggedIn,
-    });
-
+      const monster = dbMonsterData.map((posts) =>
+          posts.get({ plain: true })
+      );
+      //console.log(monster_posts);
+      res.render('Chamber', {
+          monster,
+          loggedIn: req.session.loggedIn,
+      });
+    
+      console.log(monster);
+      
   } catch (err) {
-    console.error('Error in /chamber GET route:', err);
-    res.status(500).json(err);
-  }
+      console.log(err);
+      res.status(500).json(err);
+  };
 });
 
 // TO DO This Route Lets a User POST a New Monster

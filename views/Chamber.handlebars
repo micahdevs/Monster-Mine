@@ -11,7 +11,7 @@
   <style>
     /* Dropzone styles: will eventually move to style.css file */
     .dropzone {
-          color: #130b0b;
+      color: #130b0b;
       background-color: #e7d5c5;
       border: 2px dashed #aaa;
       border-radius: 10px;
@@ -33,15 +33,12 @@
     <div class="Body" id="chamber-body">
       <a id="create-new-monster" href="/api/monster/new">Create New Monster</a>
 
-      {{#if loggedIn}}
-        <div id="monster-gallery">
-          {{#each monsters as |monster|}}
-            {{> monster-thumbnail}}
-          {{/each}}
-        </div>
-      {{else}}
-        <p>No monsters available in the chamber.</p>
-      {{/if}}
+      <div id="monster-gallery">
+        {{#each monster as |monster|}}
+          {{> monster-thumbnail}}
+        {{/each}}
+      </div>
+
 
       <form action="/upload" class="dropzone" id="monster-image-dropzone" enctype="multipart/form-data"></form>
     </div>

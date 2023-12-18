@@ -1,103 +1,104 @@
 <section class="monster-detail-sheet">
-  <div class="monster-detail-sheet" id="monster-detail-sheet">
-    <img src={{monster.image}} alt={{monster.name}}>
-    <h1><strong>{{monster.name}}</strong></h1>
-    <p>{{monster.size}} {{monster.type}}</p>
-   <hr>
-    <p><strong>Armor Class:</strong> {{monster.armor_class.type}} {{monster.armor_class.value}}</p>
-    <p><strong>Hit Points:</strong> {{monster.hit_points}}</p>
-    <p><strong>Hit Dice:</strong> {{monster.hit_dice.type}} {{monster.hit_dice.value}}</p></p>
-    <p><strong>Hit Points Roll:</strong> {{monster.hit_points_roll}}</p>
-       <hr>
 
-<p><strong>Speed:</strong>
-{{#each monster.speed}}
-{{#if this}}
- {{@key}}: {{this}}
-{{else}}
-{{/if}}
-{{/each}}
-</p>
+    <div class="monster-text-container">
+      <h1><strong>{{monster.name}}</strong></h1>
+      <p>{{monster.size}} {{monster.type}}</p>
+      <hr>
+      <p><strong>Armor Class:</strong> {{monster.armor_class.type}} {{monster.armor_class.value}}</p>
+      <p><strong>Hit Points:</strong> {{monster.hit_points}}</p>
+      <p><strong>Hit Dice:</strong> {{monster.hit_dice.type}} {{monster.hit_dice.value}}</p>
+      <p><strong>Hit Points Roll:</strong> {{monster.hit_points_roll}}</p>
+      <hr>
+      <p><strong>Speed:</strong>
+        {{#each monster.speed}}
+          {{#if this}}
+            {{@key}}: {{this}}
+          {{else}}
+          {{/if}}
+        {{/each}}
+      </p>
+      <p><strong>Strength:</strong> {{monster.strength}}</p>
+      <p><strong>Dexterity:</strong> {{monster.dexterity}}</p>
+      <p><strong>Constitution:</strong> {{monster.constitution}}</p>
+      <p><strong>Intelligence:</strong> {{monster.intelligence}}</p>
+      <p><strong>Wisdom:</strong> {{monster.wisdom}}</p>
+      <p><strong>Charisma:</strong> {{monster.charisma}}</p>
+      <p><strong>Proficiencies:</strong>
+        {{#each monster.proficiencies}}
+          {{#if this}}
+            {{@key}}: {{this}}
+          {{else}}
+          {{/if}}
+        {{/each}}
+      </p>
+      <hr>
 
-    <p><strong>Strength:</strong> {{monster.strength}}</p>
-    <p><strong>Dexterity:</strong> {{monster.dexterity}}</p>
-    <p><strong>Constitution:</strong> {{monster.constitution}}</p>
-    <p><strong>Intelligence:</strong> {{monster.intelligence}}</p>
-    <p><strong>Wisdom:</strong> {{monster.wisdom}}</p>
-    <p><strong>Charisma:</strong> {{monster.charisma}}</p>
-    <p><strong>Proficiencies:</strong>
-    {{#each monster.proficiencies}}
-      {{#if this}}
-        {{@key}}: {{this}}
-      {{else}}
-      {{/if}}
-    {{/each}}
-    </p>
-    <hr>
-
-    <p><strong>Damage Vulnerabilities:</strong> {{monster.damage_vulnerabilities}}</p>
-    <strong>Damage Resistances:</strong> {{monster.damage_resistances.types}}
-    {{!-- {{#each monster.damage_resistances.types}}
-    {{this}}
+      <p><strong>Damage Vulnerabilities:</strong> {{monster.damage_vulnerabilities}}</p>
+      <strong>Damage Resistances:</strong> {{monster.damage_resistances.types}}
+      {{!-- {{#each monster.damage_resistances.types}}
+      {{this}}
       {{/each}} --}}
     </p>
-      
-   <p><strong>Damage Immunities: </strong>{{monster.damage_immunities.types}} </p>
+
+    <p><strong>Damage Immunities: </strong>{{monster.damage_immunities.types}} </p>
     {{!-- {{#each monster.damage_immunities.types}}
       {{this}}
     {{/each}} --}}
-     
 
-    <p><strong>Condition Immunities:</strong> 
-        {{#each monster.condition_immunities.types}}
-          {{this}}
-        {{/each}}   
-      </p> 
-
-    <p><strong>Senses:</strong>
-        {{#each monster.senses.types}}
-          {{this}}
-        {{/each}}  
+    <p><strong>Condition Immunities:</strong>
+      {{#each monster.condition_immunities.types}}
+        {{this}}
+      {{/each}}
     </p>
 
-    <p><strong>Languages:</strong> 
-        {{#each monster.languages.types}}
-          {{this}}
-        {{/each}}  
+    <p><strong>Senses:</strong>
+      {{#each monster.senses.types}}
+        {{this}}
+      {{/each}}
+    </p>
+
+    <p><strong>Languages:</strong>
+      {{#each monster.languages.types}}
+        {{this}}
+      {{/each}}
     </p>
     <hr>
     <p><strong>Challenge Rating:</strong> {{monster.challenge_rating}}</p>
     <p><strong>Proficiency Bonus:</strong> {{monster.proficiency_bonus}}</p>
     <p><strong>XP:</strong> {{monster.xp}}</p>
 
-    <p><strong>Special Abilities:</strong> 
-    {{#each monster.special_abilities}}
-      {{#if this}}
-        {{@key}}: {{this}}
-      {{else}}
-      {{/if}}
-    {{/each}}
+    <p><strong>Special Abilities:</strong>
+      {{#each monster.special_abilities}}
+        {{#if this}}
+          {{@key}}: {{this}}
+        {{else}}
+        {{/if}}
+      {{/each}}
     </p>
 
-    <p><strong>Actions:</strong> 
-        {{#each monster.actions}}
-      {{#if this}}
-        {{@key}}: {{this}}
-      {{else}}
-      {{/if}}
-    {{/each}}
-</p>
+    <p><strong>Actions:</strong>
+      {{#each monster.actions}}
+        {{#if this}}
+          {{@key}}: {{this}}
+        {{else}}
+        {{/if}}
+      {{/each}}
+    </p>
 
     <p><strong>Legendary Actions:</strong>
-        {{#each monster.legendary_actions}}
-      {{#if this}}
-        {{@key}}: {{this}}
-      {{else}}
-      {{/if}}
-    {{/each}}
+      {{#each monster.legendary_actions}}
+        {{#if this}}
+          {{@key}}: {{this}}
+        {{else}}
+        {{/if}}
+      {{/each}}
     </p>
+</div>
 
+  <div class="monster-image-container">
+    <img src={{monster.image}} alt={{monster.name}} class="monster-image">
   </div>
+
 </section>
 
 {{!-- 
