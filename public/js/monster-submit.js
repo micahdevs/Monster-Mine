@@ -15,7 +15,7 @@ const wis_num = $("#WIS");
 const cha_num = $("#CHA");
 const proficiency_num =$("#proficiencyBonus-form");
 const challenge_num = $("#challenge-form");
-const user_id = userId;
+
 
 async function new_monster_submit (event) {
 
@@ -88,6 +88,7 @@ async function new_monster_submit (event) {
         constructor (types,container) {
             super(types,container);
             this.values = [];
+            this.strings = [];
         }
         compile_array () {
             const list = document.getElementById(this.container);
@@ -103,9 +104,19 @@ async function new_monster_submit (event) {
             })
             //console.log(this.types,this.values);
         }
-    }
+        compile_string () {
+            for (let index = 0; index < this.types.length; index++) {
+                if (this.container === "speed_box" || this.container === "senses_box") {
+                    this.strings.push(`${this.types[index]} ${this.values[index]} ft.`);
+                } else { 
+                    this.strings.push(`${this.types[index]} (${this.values[index]})`);
+                }
+            }
+            console.log(this.strings)
+        }
+    };
 
-    class dropdown_with_auto_maths extends json_dropdown_array {
+    class dropdown_with_auto_maths extends dropdown_with_manuals {
         constructor (types,container) {
             super(types,container);
             this.values = [];
@@ -204,26 +215,12 @@ async function new_monster_submit (event) {
         }
     }
 
-    const final_speed = new dropdown_with_manuals("speed_box");
-    final_speed.compile_array();
-    const final_saves = new dropdown_with_auto_maths("savingThrows_box");
-    final_saves.compile_array();
-    const final_skills = new dropdown_with_auto_maths("skills_box");
-    final_skills.compile_array();
-    const final_resist = new json_dropdown_array("damageResistances_box");
-    final_resist.compile_array();
-    const final_immune = new json_dropdown_array("damageImmunities_box");
-    final_immune.compile_array();
-    const final_conditions = new json_dropdown_array("conditionImmunities_box");
-    final_conditions.compile_array();
-    const final_senses = new dropdown_with_manuals("senses_box");
-    final_senses.compile_array();
-    const final_languages = new array_text("languagesContainer");
-    final_languages.compile_array();
-    const final_traits = new title_with_description("traitsContainer");
-    final_traits.compile_array();
-    const final_actions = new action_array("actionBlock");
-    final_actions.compile_array();
+    class stat {
+        constructor (score) {
+            this.score = score;
+            this.mod = GETMOD(score);
+        }
+    }
 
     function XP () {
         if (challenge_num.val() < "1") return "0-100"
@@ -265,6 +262,42 @@ async function new_monster_submit (event) {
         return "0" 
     };
 
+    function GETMOD(score){
+        return Math.floor((score-10)/2)
+    }
+
+    const final_speed = new dropdown_with_manuals("speed_box");
+    final_speed.compile_array();
+    final_speed.compile_string();
+    const final_saves = new dropdown_with_auto_maths("savingThrows_box");
+    final_saves.compile_array();
+    final_saves.compile_string();
+    const final_skills = new dropdown_with_auto_maths("skills_box");
+    final_skills.compile_array();
+    final_skills.compile_string();
+    const final_resist = new json_dropdown_array("damageResistances_box");
+    final_resist.compile_array();
+    const final_immune = new json_dropdown_array("damageImmunities_box");
+    final_immune.compile_array();
+    const final_conditions = new json_dropdown_array("conditionImmunities_box");
+    final_conditions.compile_array();
+    const final_senses = new dropdown_with_manuals("senses_box");
+    final_senses.compile_array();
+    final_senses.compile_string();
+    const final_languages = new array_text("languagesContainer");
+    final_languages.compile_array();
+    const final_traits = new title_with_description("traitsContainer");
+    final_traits.compile_array();
+    const final_actions = new action_array("actionBlock");
+    final_actions.compile_array();
+
+    const strength = new stat(str_num.val());
+    const dexterity = new stat(dex_num.val());
+    const constitution = new stat(con_num.val());
+    const intelligence = new stat(int_num.val());
+    const wisdom = new stat(wis_num.val());
+    const charisma = new stat(cha_num.val());
+
     const armor = {
         "type":armor_type.val(),
         "value":armor_value.val()
@@ -273,23 +306,23 @@ async function new_monster_submit (event) {
     const hitPoints = {
         "hit_dice_num":hit_dice_num.val(),
         "hit_dice_type":hit_dice_type.val(),
-        "HP":HP.val()
+        "HP":HP.val(),
+        "fromCON":hit_dice_num.val()*GETMOD(con_num.val())
     }
-    
+
     const monster = {
         "name":monster_name.val(),
-        "user_id":user_id,
         "size":size.val(),
         "category":category.val(),
         "armor_class":armor,
         "hit_points":hitPoints,
         "speed":final_speed,
-        "strength":str_num.val(),
-        "dexterity":dex_num.val(),
-        "constitution":con_num.val(),
-        "intelligence":int_num.val(),
-        "wisdom":wis_num.val(),
-        "charisma":cha_num.val(),
+        "strength":strength,
+        "dexterity":dexterity,
+        "constitution":constitution,
+        "intelligence":intelligence,
+        "wisdom":wisdom,
+        "charisma":charisma,
         "saves":final_saves,
         "skills":final_skills,
         "resistances":final_resist,
@@ -303,8 +336,12 @@ async function new_monster_submit (event) {
         "actions":final_actions,
     }
 
-    console.log(document.cookie);
+
+    console.log(monster);
+
     console.log(JSON.stringify(monster))
+
+
     const response = await fetch('/api/monster/create', {
         method: 'POST',
         body: JSON.stringify(monster),

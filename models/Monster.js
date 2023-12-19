@@ -14,70 +14,55 @@ Monster.init(
         name: {
             type: DataTypes.STRING,  
         },
-        user_id: {
-            type: DataTypes.INTEGER,
-            allowNull: false,
-            references: {
-                model: 'user',
-                key: 'id',
-            },
-        },
         size: {
             type: DataTypes.STRING,     
         },
-        type: {
-            type: DataTypes.STRING, 
+        category:{
+            type: DataTypes.STRING,  
         },
         // may need to update this field and/or add additional attributes to work with the JSON -Research-
         armor_class: {
             type: DataTypes.JSON
         },
         hit_points: {
-            type: DataTypes.INTEGER
-        },
-        // consider JSON datatype
-        hit_dice: {
             type: DataTypes.JSON
-        },
-        hit_points_roll: {
-            type: DataTypes.STRING
         },
         // same for this JSON datatype , can be null
         speed: {
             type: DataTypes.JSON
         },
         strength: {
-            type: DataTypes.INTEGER
+            type: DataTypes.JSON
         },
         dexterity: {
-            type: DataTypes.INTEGER
+            type: DataTypes.JSON
         },
         constitution: {
-            type: DataTypes.INTEGER
+            type: DataTypes.JSON
         },
         intelligence: {
-            type: DataTypes.INTEGER
+            type: DataTypes.JSON
         },
         wisdom: {
-            type: DataTypes.INTEGER
+            type: DataTypes.JSON
         },
         charisma: {
-            type: DataTypes.INTEGER
+            type: DataTypes.JSON
         },
         // recommend simplification of this field object -consult Alan-
-        proficiencies: {
+        saves: {
             type: DataTypes.JSON
         },
-        damage_vulnerabilites: {
+        skills: {
             type: DataTypes.JSON
         },
-        damage_resistances: {
+        resistances: {
             type: DataTypes.JSON
         },
-        damage_immunities: {
+        immunities: {
             type: DataTypes.JSON
         },
-        condition_immunities: {
+        conditions: {
             type: DataTypes.JSON
         },
         senses: {
@@ -86,32 +71,34 @@ Monster.init(
         languages: {
             type: DataTypes.JSON
         },
-        challenge_rating: {
-            type: DataTypes.INTEGER
+        challenge: {
+            type: DataTypes.STRING
         },
-        proficiency_bonus: {
-            type: DataTypes.INTEGER
+        proficiency: {
+            type: DataTypes.STRING
         },
-        xp: {
-            type: DataTypes.INTEGER
-        },
-        special_abilities: {
+        traits: {
             type: DataTypes.JSON
         },
         actions: {
             type: DataTypes.JSON
         },
-        legendary_actions: {
-            type: DataTypes.JSON
-        },
         // image file URL?
-        image: {
-            type: DataTypes.STRING
+        // image: {
+        //     type: DataTypes.STRING
+        // },
+        // // api endpoint
+        // url: {
+        //     type: DataTypes.STRING
+        // },
+        user_id: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'user',
+                key: 'id',
+            },
         },
-        // api endpoint
-        url: {
-            type: DataTypes.STRING
-        }
     },
     {
         sequelize,
