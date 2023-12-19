@@ -27,8 +27,10 @@ router.post('/create', async (req, res ) => {
  
 
 router.get('/new', async (req,res) => {
+  // userID= req.session.user_id
   try {
-    res.render('monster-create-page', {loggedIn: req.session.loggedIn, userID: req.session.user_id})
+    
+    res.render('monster-create-page', {userId: req.session.user_id, loggedIn: req.session.loggedIn, })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);

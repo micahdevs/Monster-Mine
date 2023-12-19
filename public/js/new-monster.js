@@ -1,3 +1,4 @@
+
 const monster_submit_button = document.getElementById("monsterCreateSubmit");
 const monster_name = $('#name-form');
 const size = $('#size');
@@ -208,10 +209,9 @@ const new_monster_submit= async (event) => {
     event.preventDefault();
     console.log('Monster Post Button Hit');
     console.log("Monster Name:" + monster_name.val()); 
-
     const nope= null
-    const name=document.querySelector('#name-form');
-    const user_id= 1
+    const name= monster_name.val();
+    const user_id = userId;
     const sizeInput=document.querySelector('#size');
     const categoryInput=document.querySelector('#category-form');
     const armorClassInput=document.querySelector('#armor-class-form');
@@ -237,10 +237,15 @@ const new_monster_submit= async (event) => {
     const traitsContainerInput=document.querySelector('#traitsContainer input');
     const actionBlockInput=document.querySelector('#actionBlock select');
 
+
+// console.log(req.session.user_id);
+
+
+    
       const response = await fetch('/api/monster/create', {
         method: 'POST',
         body: JSON.stringify({ 
-            monster_name,
+            name,
             user_id,
             sizeInput,
             categoryInput,
