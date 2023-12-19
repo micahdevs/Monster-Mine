@@ -204,11 +204,84 @@ class Attack {
     
 };
 
-function new_monster_submit () {
-    console.log("Hey There")
-    console.log(monster_name.val()); 
-    console.log(size.val()); 
-};
+const new_monster_submit= async (event) => {
+    event.preventDefault();
+    console.log('Monster Post Button Hit');
+    console.log("Monster Name:" + monster_name.val()); 
+
+    const nope= null
+    const name=document.querySelector('#name-form');
+    const user_id= 1
+    const sizeInput=document.querySelector('#size');
+    const categoryInput=document.querySelector('#category-form');
+    const armorClassInput=document.querySelector('#armor-class-form');
+    const armorTypeInput=document.querySelector('#armor-type-form');
+    const hitDiceInput=document.querySelector('#hitDice-form');
+    const hitDiceTypeInput=document.querySelector('#hit_dice_type');
+    const speedBoxInput=document.querySelector('#speed_box select');
+    const strInput=document.querySelector('#STR');
+    const dexInput=document.querySelector('#DEX');
+    const conInput=document.querySelector('#CON');
+    const intInput=document.querySelector('#INT');
+    const wisInput=document.querySelector('#WIS');
+    const chaInput=document.querySelector('#CHA');
+    const savingThrowsBoxInput=document.querySelector('#savingThrows_box select');
+    const skillsBoxInput=document.querySelector('#skills_box select');
+    const damageResistancesBoxInput=document.querySelector('#damageResistances_box select');
+    const damageImmunitiesBoxInput=document.querySelector('#damageImmunities_box select');
+    const conditionImmunitiesBoxInput=document.querySelector('#conditionImmunities_box select');
+    const sensesBoxInput=document.querySelector('#senses_box select');
+    const languagesContainerInput=document.querySelector('#languagesContainer input');
+    const challengeInput=document.querySelector('#challenge-form');
+    const proficiencyBonusInput=document.querySelector('#proficiencyBonus-form');
+    const traitsContainerInput=document.querySelector('#traitsContainer input');
+    const actionBlockInput=document.querySelector('#actionBlock select');
+
+      const response = await fetch('/api/monster/create', {
+        method: 'POST',
+        body: JSON.stringify({ 
+            monster_name,
+            user_id,
+            sizeInput,
+            categoryInput,
+            armorTypeInput, armorClassInput,
+            nope,
+            nope,
+            nope,
+            speedBoxInput,
+            strInput,
+            dexInput,
+            conInput,
+            intInput,
+            wisInput,
+            chaInput,
+            savingThrowsBoxInput,
+            skillsBoxInput,
+            damageResistancesBoxInput,
+            damageImmunitiesBoxInput,
+            conditionImmunitiesBoxInput,
+            sensesBoxInput,
+            languagesContainerInput,
+            challengeInput,
+            proficiencyBonusInput,
+            nope,
+            nope,
+            actionBlockInput,
+            nope,
+            nope,
+            nope
+     }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      if (response.ok) {
+        document.location.replace('/chamber');
+       
+    } else {
+        alert('Monster create failed');
+        console.log(response.body);
+      }
+    }
+
 
 function addTextField(containerId, formId) {
     const container = document.getElementById(containerId);
