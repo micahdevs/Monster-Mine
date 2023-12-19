@@ -5,34 +5,261 @@ const size = $('#size');
 const category = $('#category-form');
 const armor_type = $("#armor-type-form");
 const armor_value = $("#armor-class-form")
-const hitPoints = $('hitPoints-form');
-const walk_speed =$('walk-speed-form');
-const fly_speed = $('fly-speed-form');
-const swim_speed =$('swim-speed-form');
-const climb_speed = $('climb-speed-form');
+const hit_dice_num = $("#hit_dice_form");
+const HP = $("#hp_calculation");
+const hit_dice_type = $("#hit_dice_type");
+const str_num = $("#STR");
+const dex_num = $("#DEX");
+const con_num =$("#CON");
+const int_num = $("#INT");
+const wis_num = $("#WIS");
+const cha_num = $("#CHA");
+const proficiency_num =$("#proficiencyBonus-form");
+const challenge_num = $("#challenge-form");
 
-const armor = {
-    "type":armor_type.val(),
-    "value":armor_value.val()
-}
+function new_monster_submit (event) {
+    event.preventDefault()
+
+    const armor = {
+        "type":armor_type.val(),
+        "value":armor_value.val()
+    };
+    
+    const hitPoints = {
+        "hit_dice_num":hit_dice_num.val(),
+        "hit_dice_type":hit_dice_type.val(),
+        "HP":HP.val()
+    }
+    
+    class json_dropdown_array {
+        constructor (container) {
+            this.types = [];
+            this.container = container;
+        }
+    
+        compile_array () {
+            const list = document.getElementById(this.container);
+            //console.log(list);
+            Array.from(list.children).forEach((child) => {
+            if (child.id.includes("container")) {
+                //console.log(child.id) 
+                const type_box = document.getElementById(child.id).children[0];
+                this.types.push(type_box.children[0].value);
+                }
+            });
+            //console.log(this.types)
+        }
+    }
+
+    class array_text extends json_dropdown_array {
+        constructor (types,container) {
+            super(types,container);
+        }
+    
+        compile_array () {
+            const list = document.getElementById(this.container);
+            //console.log(list);
+            Array.from(list.children).forEach((child) => {
+            if (child.id.includes("container")) {
+                //console.log(child.id) 
+                const type_box = document.getElementById(child.id).children[0];
+                console.log(type_box)
+                this.types.push(type_box.value);
+                }
+            });
+            //console.log(this.types)
+        }
+    }
+
+    class title_with_description extends array_text {
+        constructor (types,container) {
+            super(types,container);
+            this.descriptions = [];
+        }
+        compile_array () {
+            const list = document.getElementById(this.container);
+            //console.log(list);
+            Array.from(list.children).forEach((child) => {
+            if (child.id.includes("container")) {
+                //console.log(child.id) 
+                const title_box = document.getElementById(child.id).children[0];
+                const description_box = document.getElementById(child.id).children[1];
+                console.log(title_box)
+                console.log(description_box)
+                this.types.push(title_box.value);
+                this.descriptions.push(description_box.value);
+                }
+            });
+            //console.log(this.types)
+        }
+    }
+
+    class dropdown_with_manuals extends json_dropdown_array {
+        constructor (types,container) {
+            super(types,container);
+            this.values = [];
+        }
+        compile_array () {
+            const list = document.getElementById(this.container);
+            //console.log(list);
+            Array.from(list.children).forEach((child) => {
+                if (child.id.includes("container")) {
+                    //console.log(child.id) 
+                    const type_box = document.getElementById(child.id).children[0];
+                    const value_box = document.getElementById(child.id);
+                    this.types.push(type_box.children[0].value);
+                    this.values.push(value_box.children[1].value)
+                }
+            })
+            //console.log(this.types,this.values);
+        }
+    }
+
+    class dropdown_with_auto_maths extends json_dropdown_array {
+        constructor (types,container) {
+            super(types,container);
+            this.values = [];
+        }
+        compile_array () {
+            const list = document.getElementById(this.container);
+            //console.log(list);
+            Array.from(list.children).forEach((child) => {
+                if (child.id.includes("container")) {
+                    //console.log(child.id) 
+                    const type_box = document.getElementById(child.id).children[0];
+                    const current_type = type_box.children[0].value;
+                    const profficency_bonus = proficiency_num.val();
+                    let adjusted_value = "";
+                    const attribute = () => {
+                        if (current_type === ("Strength" || "Dexterity" || "Constitution" || "Intelligence" || "Wisdom" || "Charisma")){
+                            return current_type.toUpperCase().substring(0, 3);//gotta get the id's in the right case. This means the FIRST three letters
+                        } else {
+                            if (current_type === "Athletics")  {
+                                return "STR";
+                            };
+                            if (current_type ===  "Acrobatics" || "Sleight of Hand" || "Stealth" ) {
+                                return "DEX";
+                            };
+                            if (current_type === "Arcana" || "History" || "Investigation" || "Nature" || "Religion") {
+                                return "INT";
+                            };
+                            if (current_type === "Animal Handling" || "Insight" || "Medicine" || "Perception" || "Survival" ) {
+                                return "WIS";
+                            };
+                            if (current_type === "Deception" || "Intimidation" || "Performance" || "Persuasion") {
+                                return "CHA";
+                            };
+                        }
+                    }
+                    //console.log(attribute());
+                    const ability_score = document.getElementById(attribute()).value;
+                    //console.log(ability_score);
+                    const ability_modifier = Math.floor((ability_score -10)/2);
+                    adjusted_value = `+${ability_modifier+profficency_bonus}`;
+                    this.values.push(adjusted_value);
+                    this.types.push(type_box.children[0].value);
+                }
+            })
+            console.log(this.types,this.values);
+        }
+    }
+
+    const final_speed = new dropdown_with_manuals("speed_box");
+    final_speed.compile_array();
+    const final_saves = new dropdown_with_auto_maths("savingThrows_box");
+    final_saves.compile_array();
+    const final_skills = new dropdown_with_auto_maths("skills_box");
+    final_skills.compile_array();
+    const final_resist = new json_dropdown_array("damageResistances_box");
+    final_resist.compile_array();
+    const final_immune = new json_dropdown_array("damageImmunities_box");
+    final_immune.compile_array();
+    const final_conditions = new json_dropdown_array("conditionImmunities_box");
+    final_conditions.compile_array();
+    const final_senses = new dropdown_with_manuals("senses_box");
+    final_senses.compile_array();
+    const final_languages = new array_text("languagesContainer");
+    final_languages.compile_array();
+    const final_traits = new title_with_description("traitsContainer");
+    final_traits.compile_array();
+
+    //const final_actions = 
+
+    const XP = () => {
+        if (challenge_num.val() < 1) return "0-100"
+        if (challenge_num.val() === 1) return "200"
+        if (challenge_num.val() === 2) return "450"
+        if (challenge_num.val() === 3) return "700"
+        if (challenge_num.val() === 4) return "1100"
+        if (challenge_num.val() === 5) return "1800"
+        if (challenge_num.val() === 6) return "2300"
+        if (challenge_num.val() === 7) return "2900"
+        if (challenge_num.val() === 8) return "3900"
+        if (challenge_num.val() === 9) return "5000"
+        if (challenge_num.val() === 10) return "5900"
+        if (challenge_num.val() === 11) return "7200"
+        if (challenge_num.val() === 12) return "8400"
+        if (challenge_num.val() === 13) return "10000"
+        if (challenge_num.val() === 14) return "11500"
+        if (challenge_num.val() === 15) return "13000"
+        if (challenge_num.val() === 16) return "15000"
+        if (challenge_num.val() === 17) return "18000"
+        if (challenge_num.val() === 18) return "20000"
+        if (challenge_num.val() === 19) return "22000"
+        if (challenge_num.val() === 20) return "25000"
+        if (challenge_num.val() === 21) return "33000"
+        if (challenge_num.val() === 22) return "41000"
+        if (challenge_num.val() === 23) return "50000"
+        if (challenge_num.val() === 24) return "62000"
+        if (challenge_num.val() === 25) return "75000"
+        if (challenge_num.val() === 26) return "90000"
+        if (challenge_num.val() === 27) return "105000"
+        if (challenge_num.val() === 28) return "120000"
+        if (challenge_num.val() === 29) return "135000"
+        if (challenge_num.val() === 30) return "155000"
+        if (challenge_num.val() < 30) {
+            const difference = challenge_num.val() - 30;
+            const total_xp = 155000 +(difference*20000);
+            return total_xp.toString();
+        }
+        return  
 
 
-const monster = {
-    "name":monster_name.val(),
-    "user_id":session.user_id,
-    "size":size.val(),
-    "category":category.val(),
-    "armor_class":armor
 
-}
+    }
+
+    const monster = {
+        "name":monster_name.val(),
+        //"user_id":session.user_id,
+        "size":size.val(),
+        "category":category.val(),
+        "armor_class":armor,
+        "hit_points":hitPoints,
+        "speed":final_speed,
+        "strength":str_num.val(),
+        "dexterity":dex_num.val(),
+        "constitution":con_num.val(),
+        "intelligence":int_num.val(),
+        "wisdom":wis_num.val(),
+        "charisma":cha_num.val(),
+        "saves":final_saves,
+        "skills":final_skills,
+        "resistances":final_resist,
+        "immunities":final_immune,
+        "conditions":final_conditions,
+        "senses":final_senses,
+        "languages":final_languages,
+        "challenge":`${challenge_num.val()} (${XP} XP)`,
+        "proficiency":`+${proficiency_num.val()}`,
+        "traits":final_traits,
+        //"actions":final_actions,
 
 
+    
+    }
 
-function new_monster_submit () {
     console.log("Hey There")
-    console.log(monster_name.val()); 
-    console.log(size.val());
-    console.log(category.val()); 
+    console.log(monster)
 };
 
 
