@@ -11,10 +11,11 @@ const { Monster } = require('../../models/index.js');
 // TO DO This Route Lets a User POST a New Monster
 router.post('/create', async (req, res ) => {
   console.log('MONSTER CREATE ROUTE HIT');
-  console.log(req.body)
+  //console.log(req.body)
   try {
-
     const monsterData = req.body;
+    monsterData.user_id = req.session.user_id; //tack on the user_id at the end
+    console.log(monsterData);
     const newMonster = await Monster.create(monsterData);
     res.status(201).json(newMonster);
   } catch (err) {

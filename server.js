@@ -5,7 +5,7 @@ const exphbs = require('express-handlebars');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // middleware for drag and drop/file uploads with dropzone
 const fileUpload = require('express-fileupload');
-
+const handlebars = require('handlebars');
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -28,6 +28,19 @@ const sess = {
     db: sequelize,
   }),
 };
+
+handlebars.registerHelper('ifGreaterThanZero', function(value, options) {
+  return value > 0 ? options.fn(this) : options.inverse(this);
+});
+
+handlebars.registerHelper('ifATTACK', function(actionCategory, options) {
+  if (actionCategory === 'Attack') {
+      return options.fn(this);
+  } else {
+      return options.inverse(this);
+  }
+});
+
 
 app.use(session(sess));
 
@@ -72,5 +85,7 @@ app.post('/upload', (req, res) => {
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () => console.log('Now listening'));
+  app.listen(PORT, () =>  console.log(
+    `\nServer running on port ${PORT}. Visit http://localhost:${PORT}`
+  ));
 });
