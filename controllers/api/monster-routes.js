@@ -5,9 +5,6 @@ const router = require('express').Router();
 const { Monster } = require('../../models/index.js');
 
 
-
-
-
 // TO DO This Route Lets a User POST a New Monster
 router.post('/create', async (req, res ) => {
   console.log('MONSTER CREATE ROUTE HIT');
@@ -55,10 +52,29 @@ router.get('/:id', async (req, res) => {
 router.put('/:id', async (req, res ) => {
     try {} catch {}
 });
+
 // TO DO This Route Lets a User DELETE a Monster
 router.delete('/:id', async (req, res ) => {
-    try {} catch {}
+  try {
+      const monsterId = req.params.id;
+
+      const deletedMonster = await Monster.destroy({
+          where: {
+              id: monsterId
+          }
+      });
+
+      if (deletedMonster) {
+          res.status(200).json({ message: 'Monster deleted successfully' });
+      } else {
+          res.status(404).json({ error: 'Monster not found' });
+      }
+  } catch (err) {
+      console.error(err);
+      res.status(500).json({ error: 'Internal Server Error' });
+  }
 });
+
 
 
 module.exports = router;

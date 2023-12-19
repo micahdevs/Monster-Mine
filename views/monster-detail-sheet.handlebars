@@ -107,7 +107,38 @@
     {{!-- <img src={{monster.image}} alt={{monster.name}} class="monster-image"> --}}
   </div>
 
+  <div>
+    <button class="delete-monster" data-monster-id="{{monster.id}}">Delete Monster</button>
+  </div>
+
 </section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const deleteButton = document.querySelector('.delete-monster');
+
+        deleteButton.addEventListener('click', async () => {
+            const monsterId = deleteButton.dataset.monsterId;
+
+            try {
+                const response = await fetch(`/api/monster/${monsterId}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                });
+                if (response.ok) {
+                    // Handle successful deletion, redirect to chamber
+                    window.location.href = '/chamber'; 
+                } else {
+                    console.error('Failed to delete monster');
+                }
+            } catch (error) {
+                console.error('Error deleting monster:', error);
+            }
+        });
+    });
+</script>
 
 
 
