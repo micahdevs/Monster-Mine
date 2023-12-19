@@ -160,7 +160,57 @@ function new_monster_submit (event) {
                     this.types.push(type_box.children[0].value);
                 }
             })
-            console.log(this.types,this.values);
+            //console.log(this.types,this.values);
+        }
+    }
+
+    class action_array {
+        constructor (container) {
+            this.container = container;
+            this.actions = [];
+        }
+        compile_array (){
+            const list = document.getElementById(this.container);
+            //console.log(list.children);
+            Array.from(list.children).forEach((child) => {
+                if (child.id.includes("container")){
+                    const action_type = child.children[0].children[0].value
+                    if (action_type === "Ability"){
+                        const action_object = new ability (child)
+                        this.actions.push(action_object) 
+                    } else if (action_type === "Attack") {
+                        const action_object = new attack (child)
+                        this.actions.push(action_object)
+                    } else {
+                        return console.log("An error occured in the actions")
+                    }
+                }
+            });
+        }
+    }
+
+    class attack {
+        constructor (container) {
+            this.container = container
+            this.action_category = container.children[0].children[0].value
+            this.title = container.children[1].value
+            this.attack_type = container.children[2].children[0].children[0].value
+            this.attribute_type = container.children[3].children[0].children[0].value
+            this.to_hit =container.children[4].value
+            this.range = container.children[5].value
+            this.target =  container.children[6].value
+            this.damage_roll = container.children[7].value
+            this.damage_type = container.children[8].children[0].children[0].value
+            this.description = container.children[9].value
+        }
+    }
+
+    class ability {
+        constructor (container) {
+            this.container = container
+            this.action_category = container.children[0].children[0].value
+            this.title = container.children[1].children[0].value
+            this.description = container.children[1].children[1].value
         }
     }
 
@@ -183,7 +233,11 @@ function new_monster_submit (event) {
     const final_traits = new title_with_description("traitsContainer");
     final_traits.compile_array();
 
-    //const final_actions = 
+
+
+
+    const final_actions = new action_array("actionBlock");
+    final_actions.compile_array();
 
     const XP = () => {
         if (challenge_num.val() < 1) return "0-100"
@@ -223,10 +277,7 @@ function new_monster_submit (event) {
             return total_xp.toString();
         }
         return  
-
-
-
-    }
+    };
 
     const monster = {
         "name":monster_name.val(),
@@ -252,13 +303,9 @@ function new_monster_submit (event) {
         "challenge":`${challenge_num.val()} (${XP} XP)`,
         "proficiency":`+${proficiency_num.val()}`,
         "traits":final_traits,
-        //"actions":final_actions,
-
-
-    
+        "actions":final_actions,
     }
 
-    console.log("Hey There")
     console.log(monster)
 };
 
