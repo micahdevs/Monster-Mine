@@ -14,6 +14,32 @@ const router = require('express').Router();
 const { Monster, User } = require('../models/index.js');
 // const getAuth = require('../utils/auth.js');
 
+
+// TO DO This Route Lets a User POST a New Monster
+router.post('/', (req, res ) => {
+  console.log('MONSTER CREATE ROUTE HIT');
+  // try {
+
+  //   const monsterData = req.body;
+  //   const newMonster = await Monster.create(monsterData);
+  //   res.status(201).json(newMonster);
+  // } catch (err) {
+  //   // Handle errors
+  //   console.error(err);
+  //   console.log(req.body)
+  //   res.status(500).json({ error: 'Internal Server Error' });
+  // }
+});
+
+
+
+
+
+
+
+
+
+
 // TO DO This Route GET Summons a Users Monsters to their Home Page
 router.get('/', async (req, res ) => {
   try {
@@ -39,21 +65,5 @@ router.get('/', async (req, res ) => {
   };
 });
 
-// TO DO This Route Lets a User POST a New Monster
-router.post('/chamber', async (req, res ) => {
-  try {
-    console.log('Entered /chamber POST route');
-    const newMonster = await Monster.create({
-      reader_id: req.body.reader_id, //TO CHECK : Remove
-    });
-    res.status(200).json(newMonster);
-    // after new monster creation, redirect to chamber
-    res.redirect('/chamber');
-  } catch (err) {
-    console.error('Error in /chamber POST route:', err);
-    res.status(400).json(err);
-  }
-});
-// TO DO This Route Lets a User PUT and UPDATE on a Monster
 
 module.exports = router;

@@ -5,9 +5,30 @@ const router = require('express').Router();
 const { Monster } = require('../../models/index.js');
 
 
+
+
+
+// TO DO This Route Lets a User POST a New Monster
+router.post('/create', async (req, res ) => {
+  console.log('MONSTER CREATE ROUTE HIT');
+  console.log(req.body)
+  try {
+
+    const monsterData = req.body;
+    const newMonster = await Monster.create(monsterData);
+    res.status(201).json(newMonster);
+  } catch (err) {
+    // Handle errors
+    console.error(err);
+    console.log(req.body)
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+ 
+
 router.get('/new', async (req,res) => {
   try {
-    res.render('monster-create-page', {loggedIn: req.session.loggedIn})
+    res.render('monster-create-page', {loggedIn: req.session.loggedIn, userID: req.session.user_id})
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -35,7 +56,6 @@ router.put('/:id', async (req, res ) => {
 router.delete('/:id', async (req, res ) => {
     try {} catch {}
 });
-
 
 
 module.exports = router;
