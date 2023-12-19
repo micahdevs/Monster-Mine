@@ -117,8 +117,8 @@ class Ability extends Textfield{
         let div = document.createElement("div");
         let input = document.createElement("input");
         div.id = this.container.id + "_ability_" + this.id;
-        console.log(div, "next is parent")
-        console.log(container)
+        //console.log(div, "next is parent")
+        //console.log(container)
         $(div).css({"display":"flex","flex-direction":"column"});
         container.setAttribute("class","column"); //the big change on the parent div.
         input.type = "text";
@@ -167,7 +167,7 @@ class Attack {
         attack_type.newField();
          // We assign a new button ability to the attribute button ONLY. We need this in orde to toggle the _to_hit
     };
-    new_Input (order,container_id,type,placeholder) {
+    new_Input (order,container_id,type,placeholder,num_only) {
         let element = "";
         if (order < 7){
             element = ("input");
@@ -175,7 +175,7 @@ class Attack {
             element = ("textarea");
         };
         const new_box = document.createElement(element);
-        if (element === "input") {
+        if (element === "input" && num_only === "num_only") {
             new_box.setAttribute("onkeypress", "return isNumberKey(event,this.id)")
         }
         new_box.id = container_id+"_"+type+"_"+order;
@@ -184,14 +184,14 @@ class Attack {
         container.append(new_box);
         if (order === 2) { //We have to create the button function for the ability modifiers AFTER we make the button and the new input field. Otherwise there is nothing to update.
             const button_id = container_id + "_type_"+1;
-            console.log(button_id)
+            //console.log(button_id)
             const recent_button = $(`#${button_id}`);
             recent_button.attr("onChange","to_hit(this.id, this.value)");
             recent_button.change();
         }
     };
     newDeletebutton(container){
-        console.log(container);
+        //console.log(container);
         let div = document.getElementById(container.id);
         let deletebutton = document.createElement("button");
         $(deletebutton).addClass("btn btn-secondary");
@@ -209,7 +209,7 @@ function addTextField(containerId, formId) {
     const container = document.getElementById(containerId);
     const class_opt = "";
     if (container.id === "languagesContainer") {
-        console.log("Language");
+        //console.log("Language");
         let current_language= localStorage.getItem("language_count");
         let next_language = parseInt(current_language) +1;
         localStorage.setItem("language_count",next_language);
@@ -219,7 +219,7 @@ function addTextField(containerId, formId) {
 
     }
     if (container.id === "traitsContainer"){
-        console.log("Trait");
+        //console.log("Trait");
         let current_trait= localStorage.getItem("trait_count");
         let next_trait = parseInt(current_trait) +1;
         localStorage.setItem("trait_count",next_trait);
@@ -235,7 +235,7 @@ function addDropDown(containerId, formId) {
     const class_opt = "btn btn-secondary dropdown-toggle"; //The CSS style of the new button via Bootstrap
 
     if (container.id === "speed_box") {
-        console.log("Speed");
+        //console.log("Speed");
         let current_speed = localStorage.getItem("speed_count");
         let next_speed = parseInt(current_speed) +1;
         let options = ["walking","swimming","flying","climbing","burrowing","jumping","teleporting"];
@@ -247,7 +247,7 @@ function addDropDown(containerId, formId) {
     }; 
     
     if (container.id === "savingThrows_box"){
-        console.log("Saving Throw");
+        //console.log("Saving Throw");
         let current_save = localStorage.getItem("save_count");
         let next_save = parseInt(current_save) +1;
         let options = ["Strength","Dexterity","Constitution","Intelligence","Wisdom","Charisma"];
@@ -258,7 +258,7 @@ function addDropDown(containerId, formId) {
     };
 
     if(container.id === "skills_box"){
-        console.log("Skill");
+        //console.log("Skill");
         let current_skill = localStorage.getItem("skill_count");
         let next_skill = parseInt(current_skill) +1;
         let options = ["Athletics","Acrobatics","Sleight of Hand","Stealth","Arcana","History","Investigation","Nature","Religion","Animal Handling","Insight","Medicine","Perception","Survival","Deception","Intimidation","Performance","Persuasion"];
@@ -269,7 +269,7 @@ function addDropDown(containerId, formId) {
     };
     
     if(container.id === "damageResistances_box" || container.id === "damageImmunities_box"){
-        console.log("Resistance/Immunity");
+        //console.log("Resistance/Immunity");
         let current_damage = localStorage.getItem("damage_count");
         let next_damage = parseInt(current_damage) +1;
         let options = ["Acid", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder","Slashing", "Bludgeoning", "Piercing"];
@@ -280,7 +280,7 @@ function addDropDown(containerId, formId) {
     };
 
     if(container.id === "conditionImmunities_box"){
-        console.log("");
+        //console.log("");
         let current_condition = localStorage.getItem("condition_count");
         let next_condition= parseInt(current_condition) +1;
         let options = ["Blinded","Charmed","Deafened","Frightened","Grappled","Incapacitated","Invisible","Paralyzed","Petrified","Poisoned","Prone","Restrained","Stunned","Unconscious","Exhaustion"];
@@ -291,7 +291,7 @@ function addDropDown(containerId, formId) {
     };
 
     if(container.id === "senses_box"){
-        console.log("Senses");
+        //console.log("Senses");
         let current_sense = localStorage.getItem("sense_count");
         let next_sense = parseInt(current_sense) +1;
         let options = ["Darkvision", "Blindsight", "Thoughtsense", "Tremorsense", "Truesight"];
@@ -303,7 +303,7 @@ function addDropDown(containerId, formId) {
     };
 
     if(container.id === "actionBlock"){  
-        console.log("Action");
+        //console.log("Action");
         let current_action = localStorage.getItem("action_count");
         let next_action= parseInt(current_action) +1;
         let options = ["Attack","Ability"];
@@ -321,13 +321,13 @@ function addDropDown(containerId, formId) {
 };
 
 function choose_Action(choiceId,choiceText) {
-    console.log("NewActionSelected");
+    //console.log("NewActionSelected");
     //console.log(choiceId,choiceText);
     const actionIdstring = choiceId.match(/(\d+)/); //This pulls numbers out of a string.
     const actionId = parseInt(actionIdstring[0]);
     const container = document.getElementById(choiceId).parentElement.parentElement
     const class_opt = "";
-    console.log(actionId,container);
+    //console.log(actionId,container);
     if (choiceText === "Ability"){        
         const new_ability = new Ability (actionId,class_opt,container);
         new_ability.remove_previous(container);
@@ -335,21 +335,22 @@ function choose_Action(choiceId,choiceText) {
         new_ability.newText();
         new_ability.newDeletebutton(container);
     } else {
-        console.log(container.id);
+        //console.log(container.id);
         const new_attack = new Attack ((actionId,class_opt,container));
         new_attack.remove_previous(container);
         const attack_type_options = ["Melee Weapon Attack","Melee Spell Attack","Ranged Weapon Attack","Ranged Spell Attack"];
         const attack_attribute_options = ["STR","DEX","CON","INT","WIS","CHA"];
         const damage_options =["Acid", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder","Slashing", "Bludgeoning", "Piercing"];
         const box = [0,1,2,3,4,5,6,7,8,9,10] // Because there are so many little boxes in attack, we have to set the order manually.
-        new_attack.little_drop_down(box[0],container.id,attack_type_options);
-        new_attack.little_drop_down(box[1],container.id,attack_attribute_options,);
-        new_attack.new_Input(box[2],container.id,"hit_box","To Hit")
-        new_attack.new_Input(box[3],container.id,"range", "Range")
-        new_attack.new_Input(box[4],container.id,"target", "Target")
-        new_attack.new_Input(box[5],container.id,"damage", "Damage Roll")
-        new_attack.little_drop_down(box[6],container.id,damage_options);
-        new_attack.new_Input(box[7],container.id,"effect","Effects")
+        new_attack.new_Input(box[0],container.id,"hit_box","Title","words")
+        new_attack.little_drop_down(box[1],container.id,attack_type_options);
+        new_attack.little_drop_down(box[2],container.id,attack_attribute_options,);
+        new_attack.new_Input(box[3],container.id,"hit_box","To Hit","num_only")
+        new_attack.new_Input(box[4],container.id,"range", "Range (in ft)","num_only")
+        new_attack.new_Input(box[5],container.id,"target", "Target","words")
+        new_attack.new_Input(box[6],container.id,"damage", "Damage Roll","words")
+        new_attack.little_drop_down(box[7],container.id,damage_options);
+        new_attack.new_Input(box[8],container.id,"effect","Description","words")
         new_attack.newDeletebutton(container);
 
     }
