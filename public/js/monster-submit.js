@@ -129,34 +129,46 @@ async function new_monster_submit (event) {
                     //console.log(child.id) 
                     const type_box = document.getElementById(child.id).children[0];
                     const current_type = type_box.children[0].value;
+                    console.log(current_type);
                     const profficency_bonus = proficiency_num.val();
                     let adjusted_value = "";
                     const attribute = () => {
-                        if (current_type === ("Strength" || "Dexterity" || "Constitution" || "Intelligence" || "Wisdom" || "Charisma")){
-                            return current_type.toUpperCase().substring(0, 3);//gotta get the id's in the right case. This means the FIRST three letters
+                        const stats = ["Strength", "Dexterity", "Constitution", "Intelligence", "Wisdom", "Charisma"];
+                        
+                        if (stats.includes(current_type)) {
+                            return current_type.toUpperCase().substring(0, 3);
+                        } else if (current_type === "Athletics") {
+                            return "STR";
+                        } else if (["Acrobatics", "Sleight of Hand", "Stealth"].includes(current_type)) {
+                            return "DEX";
+                        } else if (["Arcana", "History", "Investigation", "Nature", "Religion"].includes(current_type)) {
+                            return "INT";
+                        } else if (["Animal Handling", "Insight", "Medicine", "Perception", "Survival"].includes(current_type)) {
+                            return "WIS";
+                        } else if (["Deception", "Intimidation", "Performance", "Persuasion"].includes(current_type)) {
+                            return "CHA";
                         } else {
-                            if (current_type === "Athletics")  {
-                                return "STR";
-                            };
-                            if (current_type ===  "Acrobatics" || "Sleight of Hand" || "Stealth" ) {
-                                return "DEX";
-                            };
-                            if (current_type === "Arcana" || "History" || "Investigation" || "Nature" || "Religion") {
-                                return "INT";
-                            };
-                            if (current_type === "Animal Handling" || "Insight" || "Medicine" || "Perception" || "Survival" ) {
-                                return "WIS";
-                            };
-                            if (current_type === "Deception" || "Intimidation" || "Performance" || "Persuasion") {
-                                return "CHA";
-                            };
+                            console.log("NO SKILL SELECTED");
                         }
+                    };
+                    console.log(attribute());
+                    const ability_score = parseInt(document.getElementById(attribute()).value);
+                    console.log(ability_score);
+                    const ability_modifier = GETMOD(ability_score);
+                    const bonus = () => {
+                        if (parseInt(profficency_bonus)){
+                            return parseInt(profficency_bonus)
+                        } else {
+                            return 0
+                        }
+                    };
+                    const total = ability_modifier+ bonus();
+                    if (total > 0 ) {
+                        adjusted_value = `+${total}`;
+                    } else {
+                        adjusted_value = `${total}`;
                     }
-                    //console.log(attribute());
-                    const ability_score = document.getElementById(attribute()).value;
-                    //console.log(ability_score);
-                    const ability_modifier = Math.floor((ability_score -10)/2);
-                    adjusted_value = `+${ability_modifier+profficency_bonus}`;
+                    
                     this.values.push(adjusted_value);
                     this.types.push(type_box.children[0].value);
                 }

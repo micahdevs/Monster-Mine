@@ -33,7 +33,7 @@
 
 
       <p><strong>Proficiencies:</strong>
-        {{#each monster.proficiencies.strings}}
+        {{#each monster.skills.strings}}
           {{#if this}}
             {{this}}
           {{else}}
@@ -90,7 +90,7 @@
         {{#if this}}
           {{#ifATTACK action_category}}
             (ATTACK)
-              <strong>{{title}}</strong>. {{attack_type}}: {{to_hit}} ({{attribute_type}}), reach {{range}} ft., {{target}}. Hit {{damage_roll}} {{damage_type}} damage. {{description}}
+              <strong>{{title}}</strong>. {{attack_type}}: {{#ifGreaterThanZero to_hit}}+{{/ifGreaterThanZero}}{{to_hit}} to hit ({{attribute_type}}), reach {{range}} ft., {{target}}. Hit {{damage_roll}} {{damage_type}} damage. {{description}}
             <br></br>
           {{else}}
             (ABILITY)
