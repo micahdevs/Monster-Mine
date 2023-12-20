@@ -49,7 +49,6 @@ Monster.init(
         charisma: {
             type: DataTypes.JSON
         },
-        // recommend simplification of this field object -consult Alan-
         saves: {
             type: DataTypes.JSON
         },
@@ -83,14 +82,10 @@ Monster.init(
         actions: {
             type: DataTypes.JSON
         },
-        // image file URL?
-        // image: {
-        //     type: DataTypes.STRING
-        // },
-        // // api endpoint
-        // url: {
-        //     type: DataTypes.STRING
-        // },
+        image: {
+            type: DataTypes.STRING,
+            allowNull: true
+        },
         user_id: {
             type: DataTypes.INTEGER,
             allowNull: false,

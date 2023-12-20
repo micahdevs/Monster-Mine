@@ -15,6 +15,7 @@ const wis_num = $("#WIS");
 const cha_num = $("#CHA");
 const proficiency_num =$("#proficiencyBonus-form");
 const challenge_num = $("#challenge-form");
+const imageUrl = $("#monsterImageUrl");
 
 
 async function new_monster_submit (event) {
@@ -346,25 +347,30 @@ async function new_monster_submit (event) {
         "proficiency":`+${proficiency_num.val()}`,
         "traits":final_traits,
         "actions":final_actions,
+        "image": imageUrl.val(),
     }
 
-
     console.log(monster);
-
     console.log(JSON.stringify(monster))
+    console.log('Request Payload:', JSON.stringify(monster));
 
-
-    const response = await fetch('/api/monster/create', {
-        method: 'POST',
-        body: JSON.stringify(monster),
-        headers: { 'Content-Type': 'application/json' },
-      });
-      if (response.ok) {
-        document.location.replace('/chamber');
-       
-    } else {
-        alert('Monster create failed');
-        console.log(response.body);
+    try {
+        const response = await fetch('/api/monster/create', {
+            method: 'POST',
+            body: JSON.stringify(monster),
+            headers: { 'Content-Type': 'application/json' },
+        });
+    
+        if (response.ok) {
+            document.location.replace('/chamber');
+        } else {
+            const errorResponse = await response.json();
+            console.error('Monster create failed:', errorResponse);
+            alert('Monster create failed');
+        }
+    } catch (error) {
+        console.error('Error during fetch:', error);
+        alert('An error occurred during the request');
     }
 };
 
