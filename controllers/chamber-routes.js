@@ -31,15 +31,6 @@ router.post('/', (req, res ) => {
   // }
 });
 
-
-
-
-
-
-
-
-
-
 // TO DO This Route GET Summons a Users Monsters to their Home Page
 router.get('/', async (req, res ) => {
   try {

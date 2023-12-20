@@ -1,19 +1,25 @@
-<!DOCTYPE html>
-<html lang="en">
+<div class="Body" id="chamber-body">
+      <br>
+      <br>
+      <br>
+      <h2>Welcome to the Monster Chamber</h2>
+      <br>
+      <br>
+      <a class="btn.btn-primary" 
+        style="text-decoration: none; 
+        padding: 10px 20px; 
+        color: var(--lightest);
+        font-size:larger ;
+        font-family: 'Silkscreen', sans-serif;
+        background: linear-gradient(to top, #f332798f, #c959457c);
+        border: none; 
+        border-color: var(--mid);
+        border-radius: 3px;
+        transition: background-color 0.3s ease;"
+        onmouseover="this.style.background='linear-gradient(to top, #e47562, #f55992)'"
+        onmouseout="this.style.background='linear-gradient(to top, #f332798f, #c959457c)'"
 
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Monster Chamber</title>
-</head>
-
-<body>
-  <header>
-    <h2>Welcome to the Monster Chamber</h2>
-  </header>
-  <main>
-    <div class="Body" id="chamber-body">
-      <a id="create-new-monster" href="/api/monster/new">Create New Monster</a>
+      id="create-new-monster" href="/api/monster/new">Create New Monster</a>
 
       <div id="monster-gallery">
         {{#each monster as |monster|}}
