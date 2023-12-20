@@ -356,8 +356,12 @@ async function new_monster_submit (event) {
     }
 };
 
+// ensures js is run after HTML is loaded
+document.addEventListener('DOMContentLoaded', () => {
+    const monster_submit_button = document.getElementById("monsterCreateSubmit");
 
-
-
-
-monster_submit_button.addEventListener("click",new_monster_submit);
+    // previously getting an error that monsterCreateSubmit returns null, this checks for null before adding the event listener
+    if (monster_submit_button) {
+        monster_submit_button.addEventListener("click", new_monster_submit);
+    }
+});

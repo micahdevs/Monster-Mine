@@ -1,4 +1,4 @@
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css">
 <body>
     <header>
         <h1>Monster Forge</h1>
@@ -157,6 +157,24 @@
         <label for="traits">Action:</label>
         <button type="button" onclick="addDropDown('actionBlock', 'monsterForm')">Add</button>
     </div>
+
+          <form action="/upload" class="dropzone" id="monster-image-dropzone" enctype="multipart/form-data"></form>
+    </div>
+  </main>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
+  <script>
+    // Initialize Dropzone
+    Dropzone.autoDiscover = false;
+    const myDropzone = new Dropzone("#monster-image-dropzone", {
+      url: "/upload",
+      paramName: "monsterImage", // upload name
+      maxFilesize: 2, // MB
+      acceptedFiles: "image/*",
+      addRemoveLinks: true,
+    });
+  </script>
 
     <button class="btn btn-secondary" type="button" id="monsterCreateSubmit">
         Submit
