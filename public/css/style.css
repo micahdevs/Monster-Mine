@@ -222,6 +222,34 @@ text-align: center;
   margin-right: 20px;
 }
 
+.delete-monster {
+  background-color: #dc3545;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.delete-monster:hover {
+  background-color: #cc0000;
+}
+
+.dropzone {
+  color: #130b0b;
+  background-color: #e7d5c5;
+  border: 2px dashed #aaa;
+  border-radius: 10px;
+  min-height: 150px;
+  padding: 20px;
+  text-align: center;
+  max-width: 300px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#monsterCreateSubmit {
+  margin-bottom: 20px;
+}
+
 @media (max-width: 950px) {
   .monster-detail-sheet {
     flex-direction: column;
@@ -239,8 +267,6 @@ text-align: center;
     max-width: 500px;
   }
 }
-
-
 
 /* LOGIN */
 
@@ -320,3 +346,4 @@ text-align: center;
       width: 100%;
     }
   }
+
