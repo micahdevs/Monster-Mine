@@ -54,6 +54,7 @@ nav {
   border: 5px;
   border-style: solid;
   border-color: var(--mid);
+  border-radius: 2.5px;
 }
 
 nav a {
@@ -62,11 +63,13 @@ nav a {
   padding: 10px;
   margin: 0 10px;
   font-weight: bold;
+  border-radius: 10px;
 }
 
 nav a:hover {
   color: var(--darkest);
 }
+
 
 .monster-detail-sheet {
   /* margin: 0 auto; */
@@ -134,10 +137,6 @@ p {
   text-decoration: none !important;
 }
 
-.thumbnail :hover {
-border: 5px solid var(--paper);
-}
-
  
 .thumbnail a {
   height: 200px;
@@ -171,7 +170,7 @@ border: 5px solid var(--paper);
 
 .btn.btn-primary{
   font-family: 'Silkscreen', sans-serif;
-  background: linear-gradient(to top, #e47562, #f55992);
+  background: linear-gradient(to top, #f332798f, #c959457c);
   border: none; 
   border-color: var(--mid);
   border-radius: 3px;
@@ -179,8 +178,7 @@ border: 5px solid var(--paper);
 
 
 .btn.btn-primary:hover {
-  background: linear-gradient(to top, #f332798f, #c959457c);
-
+  background: linear-gradient(to top, #e47562, #f55992);
 }
 
 #chamber-body{
@@ -347,3 +345,34 @@ text-align: center;
     }
   }
 
+/* link that looks like button */
+/* 
+  #create-new-monster{
+    text-decoration: none;
+    padding: 10px 20px; 
+    color: var(--lightest);
+    font-size:larger ;
+    font-family: 'Silkscreen', sans-serif;
+    background: linear-gradient(to top, #f332798f, #c959457c);
+    border: none; 
+    border-color: var(--mid);
+    border-radius: 3px;
+    transition: background-color 0.3s ease; 
+  } */
+
+  #create-new-monster:hover {
+    background: linear-gradient(to top, #e47562, #f55992);
+  }
+  .btn.btn-primary{
+    font-family: 'Silkscreen', sans-serif;
+    background: linear-gradient(to top, #e47562, #f55992);
+    border: none; 
+    border-color: var(--mid);
+    border-radius: 3px;
+  }
+  
+  
+  .btn.btn-primary:hover {
+    background: linear-gradient(to top, #f332798f, #c959457c);
+  }
+  
