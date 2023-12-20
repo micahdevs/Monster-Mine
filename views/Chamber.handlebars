@@ -5,24 +5,6 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Monster Chamber</title>
-
-  <!-- Dropzone.js styles -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.css">
-  <style>
-    /* Dropzone styles: will eventually move to style.css file */
-    .dropzone {
-      color: #130b0b;
-      background-color: #e7d5c5;
-      border: 2px dashed #aaa;
-      border-radius: 10px;
-      min-height: 150px;
-      padding: 20px;
-      text-align: center;
-      max-width: 300px;
-     
-      
-    }
-  </style>
 </head>
 
 <body>
@@ -38,26 +20,7 @@
           {{> monster-thumbnail}}
         {{/each}}
       </div>
-
-
-      <form action="/upload" class="dropzone" id="monster-image-dropzone" enctype="multipart/form-data"></form>
     </div>
   </main>
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.9.2/min/dropzone.min.js"></script>
-  <script>
-    // Initialize Dropzone
-    Dropzone.autoDiscover = false;
-    const myDropzone = new Dropzone("#monster-image-dropzone", {
-      url: "/upload",
-      paramName: "monsterImage", // upload name
-      maxFilesize: 2, // MB
-      acceptedFiles: "image/*",
-      addRemoveLinks: true,
-    });
-  </script>
-
 
 </html>
