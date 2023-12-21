@@ -2,17 +2,18 @@
     <header>
         <h1>Monster Forge</h1>
     </header>
+<div class="creation-sheet-buffer">
+<div class="creation-sheet"</div>
 
-    <h1>User ID:{{userId}}</h1>
-    <div id="userId" value=""></div>
-    
     <form action="#" method="post" id="monster_box">
         <label for="name">Name:</label>
         <input type="text" id="name-form" name="name" placeholder="Orc, Guard, Creature" required>
         <br>
     </form>
+<br>
 
-    <div class = "row" id ="type_box">
+<div class="size-hp">
+    <div  id ="type_box">
         <fieldset>
             <label for="size">Select a Size</label>
             <select class="btn btn-secondary dropdown-toggle" name="size" id="size">
@@ -24,33 +25,40 @@
               <option>Gargantuan</option>
             </select>
         </fieldset>
-        
-        <form>
+        <br>
+       
             <label for="category">Category:</label>
             <input type="text" id="category-form" name="category" placeholder="humanoid, monstrosity" required>
             <br>
-        </form>
-    </div>
+             <br>
+     
+    {{!-- </div> --}}
 
-    <div class = "row" id ="armor_box">
+    <div  id ="armor_box">
         <form>
             <label for="armor class">Armor Class:</label>
             <input type="text" inputmode = "numeric" placeholder ="15" pattern = "^\d$" onkeypress="return isNumberKey(event)" id="armor-class-form" name="armor-class" required>
             <br>
+             <br>
         </form>
+
         <form>
             <label for="armor-type">Armor Type:</label>
             <input type="text" id="armor-type-form" placeholder="natural" name="armor-type" required>
             <br>
+             <br>
         </form>
+
     </div>
         
-    <div class = "row" id ="hp_box">
-        <form>
+    <div id ="hp_box">
+     <form>
             <label for="hit_dice">Number of Hit Dice (Monster Level):</label>
             <input type="text" inputmode = "numeric" placeholder="Number" pattern = "^\d$" onkeypress="return isNumberKey(event,this.id);" onkeyup="calculate_hp();" id="hit_dice_form" name="hitDice" required>
             <br>
-        </form>
+            <br>
+    </form>
+    <form>
         <fieldset>
             <label for="hit_dice_type">Select a Hit Dice</label>
             <select class="btn btn-secondary dropdown-toggle" name="hit_dice_type" id="hit_dice_type" onchange="calculate_hp()">
@@ -61,116 +69,137 @@
               <option>d12</option>
             </select>
         </fieldset>
-       
+        </form>
+       <br>
+
         <div>
             <label for = "hp_calculation"> HP: </label>
             <input id = hp_calculation type="text" inputmode = "numeric" pattern = "^\d$" onkeypress="return isNumberKey(event,this.id)" placeholder="Number"></input>
         </div>
     </div>
+</div>
+<br>
 
     <div class="item-fields" id="speed_box">
         <label for="speed_box">Speed:</label>
-        <button type="button" onclick="addDropDown('speed_box', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('speed_box', 'monsterForm')" >Add</button>
     </div>
+<br>
 
     <form>
-
         <label for="STR">STR:</label>
-        <input type="text" inputmode = "numeric" pattern = "^\d$" value = 10 onkeypress="return isNumberKey(event,this.id)" id="STR" name="STR" required>
+        <input type="text" inputmode = "numeric" pattern = "^\d$" value = 10 onkeypress="return isNumberKey(event,this.id)" id="STR" name="STR" required >
         <br>
-    
+        <br>
         <label for="DEX">DEX:</label>
         <input type="text" inputmode = "numeric" pattern = "^\d$" value = 10 onkeypress="return isNumberKey(event,this.id)" id="DEX" name="DEX" required>
         <br>
-    
+        <br>
         <label for="CON">CON:</label>
         <input type="text" inputmode = "numeric" pattern = "^\d$" value = 10 onkeypress="return isNumberKey(event,this.id)" onkeyup="calculate_hp()" id="CON" name="CON" required>
         <br>
-    
+        <br>
         <label for="INT">INT:</label>
         <input type="text" inputmode = "numeric" pattern = "^\d$" value = 10 onkeypress="return isNumberKey(event,this.id)" id="INT" name="INT" required>
         <br>
-    
+        <br>
         <label for="WIS">WIS:</label>
         <input type="text" inputmode = "numeric" pattern = "^\d$" value = 10 onkeypress="return isNumberKey(event,this.id)" id="WIS" name="WIS" required>
         <br>
-    
+        <br>
         <label for="CHA">CHA:</label>
         <input type="text" inputmode = "numeric" pattern = "^\d$" value = 10 onkeypress="return isNumberKey(event,this.id)" id="CHA" name="CHA" required>
         <br>
     </form>
     
+    <br>
+
     <div class="item-fields" id="savingThrows_box">
         <label for="savingThrows_box">Saving Throws:</label>
-        <button type="button" onclick="addDropDown('savingThrows_box', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('savingThrows_box', 'monsterForm')">Add</button>
     </div>
-    
+<br>
+
     <div class="item-fields" id="skills_box">
         <label for="skills_box">Skills:</label>
-        <button type="button" onclick="addDropDown('skills_box', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('skills_box', 'monsterForm')">Add</button>
     </div>
+<br>
 
     <div class="item-fields" id="damageResistances_box">
         <label for="damageResistances_box">Damage Resistances:</label>
-        <button type="button" onclick="addDropDown('damageResistances_box', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('damageResistances_box', 'monsterForm')">Add</button>
     </div>
-    
+<br>
+
     <div class="item-fields" id="damageImmunities_box">
         <label for="damageImmunities_box">Damage Immunities:</label>
-        <button type="button" onclick="addDropDown('damageImmunities_box', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('damageImmunities_box', 'monsterForm')">Add</button>
     </div>
+<br>
 
     <div class="item-fields" id="conditionImmunities_box">
         <label for="conditionImmunities_box">Condition Immunities:</label>
-        <button type="button" onclick="addDropDown('conditionImmunities_box', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('conditionImmunities_box', 'monsterForm')">Add</button>
     </div>
-    
+<br>
+
     <div class="item-fields" id="senses_box">
         <label for="senses_box">Senses:</label>
-        <button type="button" onclick="addDropDown('senses_box', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('senses_box', 'monsterForm')">Add</button>
     </div>
-    
+<br>
+
     <div class="item-fields" id="languagesContainer">
         <label for="languages">Languages:</label>
-        <button type="button" onclick="addTextField('languagesContainer', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addTextField('languagesContainer', 'monsterForm')">Add</button>
     </div>
-    
+<br>
+
     <div>
         <label for="challenge">Challenge:</label>
-        <input type="text" inputmode = "numeric" pattern = "^\d$" onkeypress="return isNumberKey(event)" id="challenge-form" name="challenge" placeholder="Number">
+        <input  type="text" inputmode = "numeric" pattern = "^\d$" onkeypress="return isNumberKey(event)" id="challenge-form" name="challenge" placeholder="Number">
         <br>
     </div>
-         
+<br>
+
     <div>
         <label for="proficiencyBonus">Proficiency Bonus:</label>
         <input type="text" inputmode = "numeric" pattern = "^\d$" onkeypress="return isNumberKey(event)" id="proficiencyBonus-form" name="proficiencyBonus" placeholder="Number"><br>
     </div>
-        
+<br>
     
     <div id="traitsContainer">
         <label for="traits">Traits:</label>
-        <button type="button" onclick="addTextField('traitsContainer', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addTextField('traitsContainer', 'monsterForm')">Add</button>
     </div>
-        
+<br>
+
     <div id="actionBlock">
         <label for="traits">Action:</label>
-        <button type="button" onclick="addDropDown('actionBlock', 'monsterForm')">Add</button>
+        <button class="add-btn" type="button" onclick="addDropDown('actionBlock', 'monsterForm')">Add</button>
     </div>
+<br>
+<br>
 
-
-    <form id="imageUploadForm" action="https://api.cloudinary.com/v1_1/de35whpod/auto/upload" method="post" enctype="multipart/form-data" data-upload-preset="jubqshuu">
+<h3>Upload Image</h3>
+    <form id="imageUploadForm" action="https://api.cloudinary.com/v1_1/de35whpod/auto/upload" 
+    method="post" enctype="multipart/form-data" data-upload-preset="jubqshuu">
         <input type="file" name="file" />
         <input type="hidden" name="upload_preset" value="jubqshuu" />
-        <input type="hidden" id="monsterImageUrl" name="monsterImageUrl" />
-        <button type="button" onclick="uploadImage()">Upload</button>
+        <input  type="hidden" id="monsterImageUrl" name="monsterImageUrl" />
+        <button  type="button" onclick="uploadImage()">Upload</button>
     </form>
+<br>
 
     <div id="confirmationMessage" style="display: none; color: green;">
     Image upload successful!
     </div>
+    <br>
+    <br>
+  <button class="btn btn-primary" type="button" id="monsterCreateSubmit">Submit</button>
 
-  <button class="btn btn-secondary" type="button" id="monsterCreateSubmit">Submit</button>
-
+</div>
   </main>
 
   <script>
