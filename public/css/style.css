@@ -32,6 +32,19 @@ margin-bottom: 3%;
   font-size:  80px;
 }
 
+.linkage{
+  color: var(--paper);
+  background-image: linear-gradient(to top, #f33279, #c95945);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.linkage:hover{
+  color: var(--lightest);
+  text-decoration: underline;
+}
+
 body {
   /* font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; */
   margin: 0;
@@ -274,7 +287,7 @@ text-align: center;
   .row {
     display: flex;
     justify-content: space-between;
-    margin: 50px auto;
+    margin: 25px auto;
     max-width: 800px;
   }
   

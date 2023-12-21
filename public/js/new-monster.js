@@ -33,7 +33,7 @@ class Dropdown {
             select.appendChild(option);
             id ++;
         });
-
+        fieldset.id = this.container.id +"_fieldset_"+ this.id;
         fieldset.appendChild(select);
         div.appendChild(fieldset);
         this.container.appendChild(div);
@@ -124,6 +124,7 @@ class Ability extends Textfield{
         input.type = "text";
         input.id = this.container.id +"_input_"+ this.id;
         input.placeholder = "Title";
+        $(input).css({"width":"100%"});
         div.appendChild(input);
         this.container.appendChild(div);
     };
@@ -155,13 +156,15 @@ class Attack {
         this.container = container;
     }
     remove_previous(container) {
+        console.log(container.children)
         while (container.childNodes.length > 1) {
             container.removeChild(container.lastChild); //This will remove ALL the elements from the action block EXCEPT the toggle Switch, which is the first child
         }
     };
+
     little_drop_down(order,container_id,options) {
         const container = document.getElementById(container_id);
-        container.setAttribute("class","row");
+        container.setAttribute("class", "m-0");
         const drop_opt = "btn btn-secondary dropdown-toggle";
         const attack_type = new Dropdown (order,drop_opt,container,options)
         attack_type.newField();
@@ -179,6 +182,7 @@ class Attack {
             new_box.setAttribute("onkeypress", "return isNumberKey(event,this.id)")
         }
         new_box.id = container_id+"_"+type+"_"+order;
+        //new_box.setAttribute("style","padding: 8px 20px")
         new_box.placeholder = placeholder;
         const container = document.getElementById(container_id);
         container.append(new_box);
@@ -196,12 +200,81 @@ class Attack {
         let deletebutton = document.createElement("button");
         $(deletebutton).addClass("btn btn-secondary");
         $(deletebutton).html("&#10060");
+        $(deletebutton).attr("id",container.id+"_delete_button")
         deletebutton.addEventListener("click",function(){
             container.remove();
         })
         div.appendChild(deletebutton);
     };
-    
+    stylize(container){
+        console.log(container.children)
+        const element = container.children
+        for (let i = 0; i < 10; i++){
+            let new_row = document.createElement("div");
+            new_row.setAttribute("id",container.id+"_row_"+i);
+            new_row.setAttribute("class","row m-0 justify-content-left")
+            // if (i === 1 || i === 3 || i === 4) {
+            //     for (let j = 0; j <2; j++){
+            //         let new_col = document.createElement("div");
+            //         new_col.setAttribute("id",container.id+"_row_"+i+"_column_"+j);
+            //         new_col.setAttribute("class","col-3")
+            //         new_row.appendChild(new_col);
+            //     }
+            // }
+            container.appendChild(new_row);
+            console.log("complete grid creation")
+        }
+        console.log(container.id)
+        //const toggle_spot = document.getElementById(container.id+"_row_1_column_1");
+        const title_spot = document.getElementById(container.id+"_row_0");
+        const attack_type_spot = document.getElementById(container.id+"_row_1");
+        const attack_attribute_spot = document.getElementById(container.id+"_row_2");
+        const to_hit_spot = document.getElementById(container.id+"_row_3");
+        const range_spot = document.getElementById(container.id+"_row_4");
+        const target_spot= document.getElementById(container.id+"_row_5");
+        const damage_roll_spot= document.getElementById(container.id+"_row_6");
+        const damage_type_spot = document.getElementById(container.id+"_row_7");
+        const description_spot = document.getElementById(container.id+"_row_8");
+        const delete_button_spot = document.getElementById(container.id+"_row_9");
+        console.log("spots acquired")
+        //const toggle = document.getElementById(element[0].id);
+        const title = document.getElementById(element[1].id);
+        const attack_type = document.getElementById(element[2].id);
+        const attack_attribute = document.getElementById(element[3].id);
+        const to_hit = document.getElementById(element[4].id);
+        const range = document.getElementById(element[5].id);
+        const target = document.getElementById(element[6].id);
+        const damage_roll = document.getElementById(element[7].id);
+        const damage_type = document.getElementById(element[8].id);
+        const description = document.getElementById(element[9].id);
+        const delete_button = document.getElementById(element[10].id);
+        console.log("inserts aquired")
+
+        
+        title_spot.appendChild(title);
+        attack_type_spot.appendChild(attack_type);
+        attack_attribute_spot.appendChild(attack_attribute);
+        to_hit_spot.appendChild(to_hit);
+        range_spot.appendChild(range);
+        target_spot.appendChild(target);
+        damage_roll_spot.appendChild(damage_roll);
+        damage_type_spot.appendChild(damage_type);
+        description_spot.appendChild(description);
+        delete_button_spot.appendChild(delete_button);
+        const inputs = [title_spot, to_hit_spot, range_spot, target_spot, damage_roll_spot, description_spot]
+        const buttons = [attack_type,attack_attribute,damage_type,];
+        buttons.forEach((button) => {
+            button.setAttribute("class","row w-100 m-0")
+            button.children[0].setAttribute("class","w-100 m-0")
+            button.children[0].children[0].setAttribute("class","w-100 m-0 btn btn-secondary btn-block dropdown-toggle")
+        });
+        inputs.forEach((input)=>{
+            input.setAttribute("style", "width:100%; max-width:800px")
+            input.children[0].setAttribute("style", "width:100%; max-width:800px")
+        })
+        delete_button.setAttribute("class","w-100 m-0 btn btn-secondary btn-block")
+
+    }
 };
 
 
@@ -325,7 +398,7 @@ function choose_Action(choiceId,choiceText) {
     //console.log(choiceId,choiceText);
     const actionIdstring = choiceId.match(/(\d+)/); //This pulls numbers out of a string.
     const actionId = parseInt(actionIdstring[0]);
-    const container = document.getElementById(choiceId).parentElement.parentElement
+    const container = document.getElementById("actionBlock_container_"+actionId)//
     const class_opt = "";
     //console.log(actionId,container);
     if (choiceText === "Ability"){        
@@ -335,14 +408,15 @@ function choose_Action(choiceId,choiceText) {
         new_ability.newText();
         new_ability.newDeletebutton(container);
     } else {
-        //console.log(container.id);
+
+        console.log(container);
         const new_attack = new Attack ((actionId,class_opt,container));
         new_attack.remove_previous(container);
-        const attack_type_options = ["Melee Weapon Attack","Melee Spell Attack","Ranged Weapon Attack","Ranged Spell Attack"];
+        const attack_type_options = ["Melee Weapon","Melee Spell","Ranged Weapon","Ranged Spell"];
         const attack_attribute_options = ["STR","DEX","CON","INT","WIS","CHA"];
         const damage_options =["Acid", "Cold", "Fire", "Force", "Lightning", "Necrotic", "Poison", "Psychic", "Radiant", "Thunder","Slashing", "Bludgeoning", "Piercing"];
         const box = [0,1,2,3,4,5,6,7,8,9,10] // Because there are so many little boxes in attack, we have to set the order manually.
-        new_attack.new_Input(box[0],container.id,"hit_box","Title","words")
+        new_attack.new_Input(box[0],container.id,"title","Title","words")
         new_attack.little_drop_down(box[1],container.id,attack_type_options);
         new_attack.little_drop_down(box[2],container.id,attack_attribute_options,);
         new_attack.new_Input(box[3],container.id,"hit_box","To Hit","num_only")
@@ -352,7 +426,7 @@ function choose_Action(choiceId,choiceText) {
         new_attack.little_drop_down(box[7],container.id,damage_options);
         new_attack.new_Input(box[8],container.id,"effect","Description","words")
         new_attack.newDeletebutton(container);
-
+        new_attack.stylize(container);
     }
 }
 
@@ -394,4 +468,5 @@ function calculate_hp(){
     
     hp.value = Math.ceil(hp_dice_count*((dice_num/2)+con_mod+0.5));
 };
+
 
