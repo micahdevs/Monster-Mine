@@ -13,7 +13,7 @@ const sequelize = require('./config/connection');
 const helpers = require('./utils/helpers');
 
 const app = express();
-const PORT = process.env.PORT || 41742;
+const PORT = process.env.PORT || 3001;
 
 const sess = {
   secret: 'YouCantHandleTheTruth',
@@ -86,9 +86,17 @@ app.post('/upload', (req, res) => {
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () =>  console.log(
-    `\nServer running on port ${PORT}. Visit http://localhost:${PORT}`
-  ));
-  }).then(() => {
-  seedAll();
+  seedAll().then(() => {
+    console.log('Seeding complete.');
+    startServer();
+  }).catch(err => {
+    console.error('Seeding failed:', err);
+    // Handle the error appropriately
+    // Decide if you still want to start the server
+    startServer();
 })
+})
+
+function startServer() {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}
