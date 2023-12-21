@@ -26,7 +26,8 @@ router.post('/create', async (req, res ) => {
 router.get('/new', async (req,res) => {
   // userID= req.session.user_id
   try {
-    res.render('monster-create-page', {userId: req.session.user_id, loggedIn: req.session.loggedIn, })
+    
+    res.render('monster-create-page', {loggedIn: req.session.loggedIn, })
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -37,6 +38,7 @@ router.get('/:id', async (req, res) => {
     try {
       const dbMonsterData = await Monster.findByPk(req.params.id); //TO DO Update the property tag in the where to be the User ID
       const monster = dbMonsterData.get({ plain: true });
+      //res.send(monster);
       res.render('monster-detail-sheet', { //TO CHECK - Make sure the handlebar tag matches
         monster, loggedIn: req.session.loggedIn,
       });

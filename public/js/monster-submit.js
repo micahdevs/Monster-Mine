@@ -207,15 +207,15 @@ async function new_monster_submit (event) {
         constructor (container) {
             this.container = container
             this.action_category = container.children[0].children[0].value
-            this.title = container.children[1].value
-            this.attack_type = container.children[2].children[0].children[0].value
-            this.attribute_type = container.children[3].children[0].children[0].value
-            this.to_hit =container.children[4].value
-            this.range = container.children[5].value
-            this.target =  container.children[6].value
-            this.damage_roll = container.children[7].value
-            this.damage_type = container.children[8].children[0].children[0].value
-            this.description = container.children[9].value
+            this.title = container.children[1].children[0].value
+            this.attack_type = container.children[2].children[0].children[0].children[0].value
+            this.attribute_type = container.children[3].children[0].children[0].children[0].value
+            this.to_hit =container.children[4].children[0].value
+            this.range = container.children[5].children[0].value
+            this.target =  container.children[6].children[0].value
+            this.damage_roll = container.children[7].children[0].value
+            this.damage_type = container.children[8].children[0].children[0].children[0].value
+            this.description = container.children[9].children[0].value
         }
     }
 

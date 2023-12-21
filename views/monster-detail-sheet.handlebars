@@ -90,7 +90,7 @@
         {{#if this}}
           {{#ifATTACK action_category}}
             (ATTACK)
-              <strong>{{title}}</strong>. {{attack_type}}: {{#ifGreaterThanZero to_hit}}+{{/ifGreaterThanZero}}{{to_hit}} to hit ({{attribute_type}}), reach {{range}} ft., {{target}}. Hit {{damage_roll}} {{damage_type}} damage. {{description}}
+              <strong>{{title}}</strong>. {{attack_type}} Attack: {{#ifGreaterThanZero to_hit}}+{{/ifGreaterThanZero}}{{to_hit}} to hit ({{attribute_type}}), reach {{range}} ft., {{target}}. Hit {{damage_roll}} {{damage_type}} damage. {{description}}
             <br></br>
           {{else}}
             (ABILITY)
@@ -109,7 +109,7 @@
 </div>
 
   <div class="monster-image-container">
-    {{!-- <img src={{monster.image}} alt={{monster.name}} class="monster-image"> --}}
+    <img src={{monster.image}} alt={{monster.name}} class="monster-image">
   </div>
 
 {{!-- modal for delete button "are you sure..." --}}
