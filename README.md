@@ -8,13 +8,19 @@ The Monster Mine is a Node.js web application designed to simplify the process o
 
 * Customization: Create monsters from scratch by defining attributes such as name, type, hit points, armor class, and more. Upload your own images to craft a truly unique monster.
 
-* Stat Blocks: Generate a stat block for each monster, including abilities, actions, and legendary actions.
+* Stat Blocks: Generate a custom stat block for each monster, including abilities, actions, and proficiencies.
 
 * Save and Delete: Monsters are automatically saved to your monster chamber for future use and can be deleted.
 
+### Technologies Used
+* Node.js & Express.js
+* Sequelize ORM with MySQL
+* Handlebars.js
+* Cloudinary
+
 ### Screenshot
 
-![screenshot]()
+![screenshot](/assets/Homepage.png)
 
 ### Repository Link
 
