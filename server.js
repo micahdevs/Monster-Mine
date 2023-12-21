@@ -6,6 +6,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 // middleware for drag and drop/file uploads with dropzone
 const fileUpload = require('express-fileupload');
 const handlebars = require('handlebars');
+const { seedAll } = require('./seeds/seed');
 
 const routes = require('./controllers');
 const sequelize = require('./config/connection');
@@ -85,7 +86,16 @@ app.post('/upload', (req, res) => {
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () =>  console.log(
-    `\nServer running on port ${PORT}. Visit http://localhost:${PORT}`
-  ));
-});
+  // seedAll().then(() => {
+  //   console.log('Seeding complete.');
+  //   startServer();
+  // }).catch(err => {
+  //   console.error('Seeding failed:', err);
+  //   // Handle the error appropriately
+  //   // Decide if you still want to start the server
+    startServer();
+})
+
+function startServer() {
+  app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}

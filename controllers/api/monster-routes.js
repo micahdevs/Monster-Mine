@@ -11,11 +11,6 @@ router.post('/create', async (req, res ) => {
     const monsterData = req.body;
     monsterData.user_id = req.session.user_id;
 
-    // Check if the monsterImageUrl is in req.body
-    if (!monsterData.image) {
-      return res.status(400).json({ error: 'monsterImageUrl is missing in the request body' });
-    }
-
     console.log("Before Create - monsterData", monsterData);
 
     const newMonster = await Monster.create(monsterData);

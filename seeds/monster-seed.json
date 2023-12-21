@@ -1,152 +1,70 @@
 [
-    {   
-        "name":"Justalich",
-        "user_id": 1,
-        "size":"medium",
-        "type":"undead",
-        "armor_class":
-            {
-                "type":"natural",
-                "value":19
-            },
-        "hit_points":135,
-        "hit_dice":
-            {
-                "type":"d12",
-                "value":18
-            },
-        "hit_points_roll":"18d12 + 54",
-        "speed":
-        {
-            "walking":30,
-            "climbing":null,
-            "swimming":null,
-            "flying":null
-        },
-        "strength":11,
-        "dexterity":16,
-        "constitution":16,
-        "intelligence":20,
-        "wisdom":15,
-        "charisma":16,
-        "proficiencies":{
-            "str_save":null,
-            "dex_save":null,
-            "con_save": 10,
-            "int_save":12,
-            "wis_save":9,
-            "chr_save":null,
-            "athletics":null,
-            "acrobatics":null,
-            "sleight_of_hand":null,
-            "stealth":null,
-            "arcana":19,
-            "history":12,
-            "investigation":null,
-            "nature":null,
-            "religion":null,
-            "animal_handling":null,
-            "insight":9,
-            "medicine":null,
-            "perception":9,
-            "survival":null,
-            "deception":null,
-            "intimidation":null,
-            "performance":null,
-            "persuasion":null
-        },
-        "damage_vulnerabilites":{"types":[null]},
-        "damage_resistances": {"types":["cold","lightning","necrotic"]},
-        "damage_immunities":{"types":["poison", "bludgeoning, piercing, and slashing from Nonmagical Attacks"]},
-        "condition_immunities":{"types":["charmed", "exhaustion", "frightened", "paralyzed", "poisoned"]},
-        "senses":{
-            "truesight":120,
-            "darkvision":null,
-            "blindsight":null,
-            "tremorsense":null,
-            "passive_perception":19
-        },
-        "languages":{"types":["common","elvish","dwarvish","draconic","abyssal"]},
-        "challenge_rating":21,
-        "proficiency_bonus":7,
-        "xp":33000,
-        "legendary_actions":null,
-        "image":"/uploads/justalichTest.jpeg",
-        "url":null
-    },
-    {   
-        "name":"MitchellMinion",
-        "user_id": 1,
-        "size":"small",
-        "type":"humanoid",
-        "armor_class":
-            {
-                "type":"natural",
-                "value":110
-            },
-        "hit_points":14,
-        "hit_dice":
-            {
-                "type":"d4",
-                "value":4
-            },
-        "hit_points_roll":"4d4 + 4",
-        "speed":
-        {
-            "walking":30,
-            "climbing":null,
-            "swimming":null,
-            "flying":null
-        },
-        "strength":10,
-        "dexterity":10,
-        "constitution":12,
-        "intelligence":10,
-        "wisdom":10,
-        "charisma":10,
-        "proficiencies":{
-            "str_save":null,
-            "dex_save":null,
-            "con_save":null,
-            "int_save":null,
-            "wis_save":null,
-            "chr_save":null,
-            "athletics":null,
-            "acrobatics":null,
-            "sleight_of_hand":null,
-            "stealth":null,
-            "arcana":null,
-            "history":null,
-            "investigation":null,
-            "nature":null,
-            "religion":null,
-            "animal_handling":null,
-            "insight":null,
-            "medicine":null,
-            "perception":null,
-            "survival":null,
-            "deception":null,
-            "intimidation":null,
-            "performance":null,
-            "persuasion":null
-        },
-        "damage_vulnerabilites":{"types":[null]},
-        "damage_resistances": {"types":null},
-        "damage_immunities":{"types":null},
-        "condition_immunities":{"types":null},
-        "senses":{
-            "truesight":null,
-            "darkvision":null,
-            "blindsight":null,
-            "tremorsense":null,
-            "passive_perception":10
-        },
-        "languages":{"types":["common","goblin"]},
-        "challenge_rating":1,
-        "proficiency_bonus":0,
-        "xp":100,
-        "legendary_actions":null,
-        "image":"/uploads/mitchellMinion.jpeg",
-        "url":null
+    {
+      "name": "Goblin",
+      "size": "Small",
+      "category": "Humanoid",
+      "armor_class": {
+        "base": 15,
+        "with_shield": 18
+      },
+      "hit_points": {
+        "average": 7,
+        "roll": "2d6"
+      },
+      "speed": {
+        "walking": 30
+      },
+      "strength": {
+        "score": 8,
+        "modifier": -1
+      },
+      "dexterity": {
+        "score": 14,
+        "modifier": 2
+      },
+      "constitution": {
+        "score": 10,
+        "modifier": 0
+      },
+      "intelligence": {
+        "score": 10,
+        "modifier": 0
+      },
+      "wisdom": {
+        "score": 8,
+        "modifier": -1
+      },
+      "charisma": {
+        "score": 8,
+        "modifier": -1
+      },
+      "saves": {
+        "dexterity": true,
+        "constitution": false,
+        "wisdom": false
+      },
+      "skills": {
+        "stealth": 6
+      },
+      "resistances": {
+        "poison": true
+      },
+      "immunities": {},
+      "conditions": {},
+      "senses": {
+        "darkvision": 60
+      },
+      "languages": ["Common", "Goblin"],
+      "challenge": "1/4",
+      "proficiency": "2",
+      "traits": {
+        "Nimble Escape": "The goblin can take the Disengage or Hide action as a bonus action on each of its turns."
+      },
+      "actions": {
+        "Scimitar": "Melee Weapon Attack: +4 to hit, reach 5 ft., one target. Hit: 5 (1d6 + 2) slashing damage."
+      },
+      "image": "goblin.jpg",
+      "user_id": 1
     }
-]
+  ]
+  

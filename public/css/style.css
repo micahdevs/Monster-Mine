@@ -246,6 +246,9 @@ text-align: center;
 
 #monsterCreateSubmit {
   margin-bottom: 20px;
+  margin-top: 1%;
+  max-width: 50%;
+  width: 20%;
 }
 
 @media (max-width: 950px) {
@@ -369,6 +372,7 @@ text-align: center;
     border: none; 
     border-color: var(--mid);
     border-radius: 3px;
+    
   }
   
   
@@ -376,3 +380,52 @@ text-align: center;
     background: linear-gradient(to top, #f332798f, #c959457c);
   }
   
+  .btn.btn-secondary{
+    font-family: 'Silkscreen', sans-serif;
+    background-color:var(--dark);
+    color: var(--lightest);
+    border: solid; 
+    border-color: var(--mid);
+    border-radius: 3px; 
+    max-height: 46px;
+  }
+
+
+input[type="text"] {
+  height: 40px;
+  max-width: 80%;
+}
+
+ .creation-sheet{
+    border-color: var(--mid);
+    border-width: 2px;
+    border: solid; 
+    border-radius: 3px;
+    padding: 2%;
+    color: var(--lightest);
+    margin: 0 auto;
+    max-width: 60%;
+    /* text-align: center; */
+  }
+
+ .add-btn{
+  background-color: var(--dark);
+  color: var(--lightest);
+  border: var(--mid);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 3px;
+ }
+
+ .add-btn:hover{
+  background-color: var(--mid);
+  color: var(--lightest);
+  border: var(--dark);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 3px;
+ }
+
+
+
+  /* background:linear-gradient(to top, #3b2222,#3b3b6c); */
