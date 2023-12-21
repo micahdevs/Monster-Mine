@@ -86,15 +86,14 @@ app.post('/upload', (req, res) => {
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
-  seedAll().then(() => {
-    console.log('Seeding complete.');
+  // seedAll().then(() => {
+  //   console.log('Seeding complete.');
+  //   startServer();
+  // }).catch(err => {
+  //   console.error('Seeding failed:', err);
+  //   // Handle the error appropriately
+  //   // Decide if you still want to start the server
     startServer();
-  }).catch(err => {
-    console.error('Seeding failed:', err);
-    // Handle the error appropriately
-    // Decide if you still want to start the server
-    startServer();
-})
 })
 
 function startServer() {
