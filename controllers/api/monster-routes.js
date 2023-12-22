@@ -39,15 +39,16 @@ router.get('/:id', async (req, res) => {
       const dbMonsterData = await Monster.findByPk(req.params.id); //TO DO Update the property tag in the where to be the User ID
       const monster = dbMonsterData.get({ plain: true });
       const is_owner = async (req) => {
-        if (req.session.user_id === dbMonsterData.user_id) {
+        if (req.session.user_id === monster.user_id) {
           return true
         } else {
             return false
         }
       }
+      const owner = await is_owner(req)
       //res.send(monster);
       res.render('monster-detail-sheet', { //TO CHECK - Make sure the handlebar tag matches
-        monster, loggedIn: req.session.loggedIn, ownership:is_owner(req) 
+        monster, loggedIn: req.session.loggedIn, ownership: owner
       });
     } catch (err) {
       console.log(err);
@@ -72,7 +73,7 @@ router.delete('/:id', async (req, res ) => {
             }
           });
       } else {
-          return
+          return res.redirect('/')
       }
     };
       if (deletedMonster(req)) {
