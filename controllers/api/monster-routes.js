@@ -38,9 +38,16 @@ router.get('/:id', async (req, res) => {
     try {
       const dbMonsterData = await Monster.findByPk(req.params.id); //TO DO Update the property tag in the where to be the User ID
       const monster = dbMonsterData.get({ plain: true });
+      const is_owner = async (req) => {
+        if (req.session.user_id === dbMonsterData.user_id) {
+          return true
+        } else {
+            return false
+        }
+      }
       //res.send(monster);
       res.render('monster-detail-sheet', { //TO CHECK - Make sure the handlebar tag matches
-        monster, loggedIn: req.session.loggedIn,
+        monster, loggedIn: req.session.loggedIn, ownership:is_owner(req) 
       });
     } catch (err) {
       console.log(err);
@@ -56,17 +63,22 @@ router.put('/:id', async (req, res ) => {
 router.delete('/:id', async (req, res ) => {
   try {
       const monsterId = req.params.id;
-
-      const deletedMonster = await Monster.destroy({
-          where: {
-              id: monsterId
-          }
-      });
-
-      if (deletedMonster) {
+      const monster_to_delete = await Monster.findOne({ where: { id: monsterId} });
+      const deletedMonster = async (req) => {
+        if (req.session.user_id === monster_to_delete.user_id) {
+          await Monster.destroy({
+            where: {
+                id: monsterId
+            }
+          });
+      } else {
+          return
+      }
+    };
+      if (deletedMonster(req)) {
           res.status(200).json({ message: 'Monster deleted successfully' });
       } else {
-          res.status(404).json({ error: 'Monster not found' });
+          res.status(404).json({ error: 'Permission Denied' });
       }
   } catch (err) {
       console.error(err);
